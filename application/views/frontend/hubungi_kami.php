@@ -51,8 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li ><a href="<?php echo base_url(); ?>profil_perusahaan">Profil Perusahaan</a></li>  
                         <li ><a href="<?php echo base_url(); ?>produk_servis">Produk & Servis</a></li>
                         <li ><a href="<?php echo base_url(); ?>lowongan_pekerjaan">Lowongan Pekerjaan</a></li>
-                        <li class="active"><a href="<?php echo base_url(); ?>hubungi_kami">Hubungi Kami</a></li>
-                        <li class="active"><a href="<?php echo base_url(); ?>login">Login</a></li>
+                        <li class="active"><a href="<?php echo base_url(); ?>hubungi_kami">Hubungi Kami</a></li>    
+                    <?php if($this->session->userdata('login_status') == TRUE ){ ?>
+                        <li><a href="<?php echo base_url(); ?>profile">Profile</a></li>
+                   	<?php } else { ?>
+                        <li><a href="<?php echo base_url(); ?>login">Login</a></li>
+                   	<?php } ?>
                     </ul>
                 </div>
             </div>

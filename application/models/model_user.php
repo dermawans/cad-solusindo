@@ -5,26 +5,23 @@ class Model_user extends CI_Model{
         parent::__construct();
     }
 
-	// Bagian Login	=================	
-	function login($username, $password) {
-        //create query to connect user login database
-        $this->db->select('*');
-        $this->db->from('tbl_pelamar');
-        $this->db->where('username', $username);
-        $this->db->where('password', MD5($password));
-        $this->db->limit(1);
-		
-        //get query and processing
-        $query = $this->db->get();
-        if($query->num_rows() > 0) {
-            return $query->result(); //if data is true
-        } else {
-            return false; //if data is wrong
-        }
+	//Register
+	
+	 public function cekEmail($email){
+        $this->db->where('email',$email);
+        $query = $this->db->get('tbl_users');
+        return $query->result();
     }
-	// Bagian Login	=================
+	 public function cekUsername($username){
+        $this->db->where('username',$username);
+        $query = $this->db->get('tbl_users');
+        return $query->result();
+    }
 	
-	
+	 public function registerUser($data){
+        $query = $this->db->insert('tbl_users',$data);
+        return $query;
+    }
 }
 	
 	 

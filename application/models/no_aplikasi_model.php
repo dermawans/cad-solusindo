@@ -11,7 +11,7 @@ class no_aplikasi_model extends CI_Model{
                 $code = sprintf("%04s", $tmp);
             }
         }else{
-            $code = "01";
+            $code = "P-01";
         }
         return $code;
     }

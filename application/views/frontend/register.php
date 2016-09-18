@@ -42,27 +42,33 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Log In</h2>
+						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
 					</div>
 					<div class="panel-body">
                     <!-- NOTIF -->
-           			<?php
-					$berhasil = $this->session->flashdata('berhasil');
-					$message = $this->session->flashdata('notif');
-					if($berhasil){
-						echo '<p class="alert alert-info text-center">'.$berhasil .'</p>';
-					}
-					if($message){
-						echo '<p class="alert alert-danger text-center">'.$message .'</p>';
-					}
-					?>
+            <?php
+            $message = $this->session->flashdata('notif');
+            if($message){
+                echo '<p class="alert alert-danger text-center">'.$message .'</p>';
+            }?>
     					
-						<?php echo form_open('admin/cek_login','class="form-horizontal"'); ?> 
+						<?php echo form_open('register/register','class="form-horizontal"'); ?> 
 							<div class="form-group mb-lg">
+								<label>Email</label>
+								<div class="input-group input-group-icon"> 
+									<input name="email" type="email" class="form-control input-lg" required autofocus/>
+									<span class="input-group-addon">
+										<span class="icon icon-lg">
+											<i class="fa fa-envelope"></i>
+										</span>
+									</span>
+								</div>
+							</div>
+                            
+                            <div class="form-group mb-lg">
 								<label>Username</label>
-								<div class="input-group input-group-icon">
-									<input name="last_login" type="hidden" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" class="form-control input-lg" required/>
-									<input name="username" type="text" class="form-control input-lg" required autofocus/>
+								<div class="input-group input-group-icon"> 
+									<input name="username" type="text" class="form-control input-lg" required/>
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -87,11 +93,9 @@
 
 							<div class="row">
 								<div class="col-sm-12 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Log In</button>
+									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
 								</div>
 							</div>
-                            <hr>
-							<p class="text-center">Don't have an account yet? <a href="<?php echo site_url('register')?>">Sign Up!</a>
 						</form>
 					</div>
 				</div>

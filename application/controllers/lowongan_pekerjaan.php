@@ -21,7 +21,12 @@ function __construct(){
 	
 	public function lamar()
 	{	
-						
+		if($this->session->userdata('login_status') != TRUE ){
+            $this->session->set_flashdata('notif','Silahkan login dahulu !');
+            redirect('login');
+        }
+		else 
+		{		
 		$id_lowongan['id_lowongan'] = $this->uri->segment(3);
 		$q = $this->db->get_where("tbl_master_lowongan",$id_lowongan);
 			$d = array();
@@ -38,10 +43,18 @@ function __construct(){
 		
 		$this->load->view('frontend/lamar',$d);
 		}
+	}
 	
 	
 	public function lamar_pekerjaan()
 	{	 	
+			
+		if($this->session->userdata('login_status') != TRUE ){
+            $this->session->set_flashdata('notif','Silahkan login dahulu !');
+            redirect('login');
+        }
+		else
+		{	
 			//fungsi simpan lamaran
 			
 			$data_informasi_personal['no_aplikasi'] = $this->input->post('no_aplikasi');
@@ -219,10 +232,18 @@ function __construct(){
 			
 			header('location:'.base_url().'lowongan_pekerjaan/sukses');
 			
+		}
 	}
 	
 	public function sukses()
 	{  
+		if($this->session->userdata('login_status') != TRUE ){
+            $this->session->set_flashdata('notif','Silahkan login dahulu !');
+            redirect('login');
+        }
+		else
+		{	
 		$this->load->view('frontend/sukses');
+		}
 	}
 }

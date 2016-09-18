@@ -61,7 +61,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li><a href="<?php echo base_url(); ?>produk_servis"><i class="fa fa-briefcase fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Produk & Servis</span></a></li>         
                     <li class="active"><a href="<?php echo base_url(); ?>lowongan_pekerjaan"><i class="fa fa-group fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Lowongan Pekerjaan</span></a></li>        
                     <li><a href="<?php echo base_url(); ?>hubungi_kami"><i class="fa fa-phone fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Hubungi Kami</span></a></li> 
-                     <li><a href="<?php echo base_url(); ?>login"><i class="fa fa-phone fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Login</span></a></li>                     
+                    <?php if($this->session->userdata('login_status') == TRUE ){ ?>
+                                                
+                    <li><a href="<?php echo base_url(); ?>profile"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profile</span></a></li>                        
+
+                    <?php } else { ?>
+                    
+                    <li><a href="<?php echo base_url(); ?>login"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Login</span></a></li>                        
+ 					<?php } ?>                
                 </ul>
             </div>
         </nav>
