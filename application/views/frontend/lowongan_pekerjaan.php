@@ -138,7 +138,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												
                                                 <p class="pelamar">Jumlah Pelamar : <?php echo $row->pelamar; ?></p>
                                                 
-                                                <p><a href="<?php echo base_url(); ?>lowongan_pekerjaan/lamar/<?php echo $row->id_lowongan; ?>" class="btn btn-info">Lamar</a></p>
+                                                <?php if($this->session->userdata('login_status') == TRUE ){ ?>
+                                                
+                                                <p><a href="<?php echo base_url(); ?>lowongan_pekerjaan/lamar/<?php echo $row->id_lowongan; ?>" class="btn btn-info">Lamar</a></p>				
+                                                <?php } else { ?>
+                                                
+                                                <p><a href="<?php echo base_url(); ?>login" class="btn btn-info">Login</a></p>
+                                                <?php } ?>
                                              </div>
                                              
                                         </div>
