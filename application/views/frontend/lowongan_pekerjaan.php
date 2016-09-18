@@ -61,13 +61,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li><a href="<?php echo base_url(); ?>produk_servis"><i class="fa fa-briefcase fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Produk & Servis</span></a></li>         
                     <li class="active"><a href="<?php echo base_url(); ?>lowongan_pekerjaan"><i class="fa fa-group fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Lowongan Pekerjaan</span></a></li>        
                     <li><a href="<?php echo base_url(); ?>hubungi_kami"><i class="fa fa-phone fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Hubungi Kami</span></a></li> 
-                    <?php if($this->session->userdata('login_status') == TRUE ){ ?>
+                    <?php if($this->session->userdata('login_status') == TRUE  and $this->session->userdata('LEVEL') == "Pelamar"  ){ ?>
                                                 
-                    <li><a href="<?php echo base_url(); ?>profile"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profile</span></a></li>                        
+                    <li><a href="<?php echo base_url(); ?>profile"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profil</span></a></li>            
+                    <li><a href="<?php echo base_url(); ?>login/logout"><i class="fa fa-sign-out fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Keluar</span></a></li>                      
 
                     <?php } else { ?>
                     
-                    <li><a href="<?php echo base_url(); ?>login"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Login</span></a></li>                        
+                    <li><a href="<?php echo base_url(); ?>login"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Masuk</span></a></li>                        
  					<?php } ?>
 
                 </ul>
@@ -147,12 +148,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												
                                                 <p class="pelamar">Jumlah Pelamar : <?php echo $row->pelamar; ?></p>
                                                 
-                                                <?php if($this->session->userdata('login_status') == TRUE ){ ?>
+                                                <?php if($this->session->userdata('login_status') == TRUE and $this->session->userdata('LEVEL') == "Pelamar"){ ?>
                                                 
                                                 <p><a href="<?php echo base_url(); ?>lowongan_pekerjaan/lamar/<?php echo $row->id_lowongan; ?>" class="btn btn-info">Lamar</a></p>				
                                                 <?php } else { ?>
                                                 
-                                                <p><a href="<?php echo base_url(); ?>login" class="btn btn-info">Login</a></p>
+                                                <p><a href="<?php echo base_url(); ?>login" class="btn btn-info">Masuk untuk melamar</a></p>
                                                 <?php } ?>
                                              </div>
                                              

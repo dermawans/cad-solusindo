@@ -59,11 +59,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li><a href="<?php echo base_url(); ?>home"><i class="fa fa-home fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Home</span></a></li>         
                     <li><a href="<?php echo base_url(); ?>profil_perusahaan"><i class="fa fa-globe fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profil Perusahaan</span></a></li>         
                     <li><a href="<?php echo base_url(); ?>produk_servis"><i class="fa fa-briefcase fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Produk & Servis</span></a></li>         
-                    <li class="active"><a href="<?php echo base_url(); ?>lowongan_pekerjaan"><i class="fa fa-group fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Lowongan Pekerjaan</span></a></li>        
+                    <li><a href="<?php echo base_url(); ?>lowongan_pekerjaan"><i class="fa fa-group fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Lowongan Pekerjaan</span></a></li>        
                     <li><a href="<?php echo base_url(); ?>hubungi_kami"><i class="fa fa-phone fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Hubungi Kami</span></a></li> 
                     <?php if($this->session->userdata('login_status') == TRUE ){ ?>
                                                 
-                    <li><a href="<?php echo base_url(); ?>profile"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profil</span></a></li>                        
+                    <li class="active"><a href="<?php echo base_url(); ?>profile"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profil</span></a></li>    
+                    <li><a href="<?php echo base_url(); ?>login/logout"><i class="fa fa-sign-out fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Keluar</span></a></li>                        
 
                     <?php } else { ?>
                     
@@ -78,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="page-wrapper"><!--BEGIN TITLE & BREADCRUMB PAGE-->
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
-                    <div class="page-title">Lowongan Pekerjaan</div>
+                    <div class="page-title">Profil Pelamar</div>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -91,24 +92,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-lg-14">
                                     <div class="portlet box portlet-blue">
                                         <div class="portlet-header">
-                                            <div class="caption">Formulir Lamaran</div> 
+                                            <div class="caption">Isi Data Pelamar</div> 
                                         </div>
                                         <div class="portlet-body">
-									        <?php echo form_open_multipart('lowongan_pekerjaan/lamar_pekerjaan','class="form-validate-signup"'); ?>	 
+									        <?php echo form_open_multipart('profile/isi','class="form-validate-signup"'); ?>	 
                                                 <table class="table table-hover table-striped">
                                                     <tbody>
-                                                    <tr>
-                                                        <td class="input-medium">No. Aplikasi <span class='require'>*</span></td>
-                                                        <td colspan="3"><input id="no_aplikasi" value="<?= $no_aplikasi ?>" class="form-control required" name="no_aplikasi"  type="text" readonly></td> 
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="input-medium">Tanggal Melamar <span class='require'>*</span></td>
-                                                        <td colspan="3"><input type="text" name="tanggal_melamar" class="form-control required" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" readonly></td> 
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="input-medium">Posisi <span class='require'>*</span></td>
-                                                        <td colspan="3"><input type="text" name="posisi" class="form-control required" value="<?php echo $judul_lowongan; ?>" readonly> <input type="hidden" name="id_lowongan" class="form-control required" value="<?php echo $id_lowongan; ?>" readonly> <input type="hidden" name="pelamar" class="form-control required" value="<?php echo $pelamar; ?>" readonly></td> 
-                                                    </tr>
                                                     <tr>
                                                         <td>Nama  <span class='require'>*</span><br>(Sesuai Kartu Identitas : KTP/SIM)</td>
                                                         <td colspan="3"><input type="text" name="nama" class="form-control required"/></td> 
@@ -137,12 +126,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <td>Agama <span class='require'>*</span></td>
                                                         <td colspan="3">
                                                             <select class="form-control required" name="agama">
-                                                                <option></option>
                                                                 <option value="Islam">Islam</option>
                                                                 <option value="Kristen">Kristen</option> 
                                                                 <option value="Katolik">Katolik</option> 
                                                                 <option value="Hindu">Hindu</option> 
                                                                 <option value="Budha">Budha</option> 
+                                                                <option value="Lainnya">Lainnya</option> 
                                                             </select>
                                                          </td> 
                                                     </tr>
@@ -167,7 +156,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <tr>
                                                         <td>Alamat Email <span class='require'>*</span></td>
                                                         <td colspan="3">
-                                                        	<input type="email" name="email" class="form-control required email"/>	
+                                                        	<input type="email" name="email" value="<?php echo $this->session->userdata('EMAIL'); ?>" class="form-control required email" readonly/>	
                                                         </td> 
                                                     </tr>
                                                     <tr>
@@ -198,7 +187,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <td>Status Perkawinan <span class='require'>*</span></td>
                                                         <td colspan="3">
                                                             <select class="input-small form-control required" name="status_perkawinan">
-                                                                <option></option>
                                                                 <option value="Lajang">Lajang</option>
                                                                 <option value="Menikah">Menikah</option> 
                                                             </select>
@@ -208,8 +196,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <td>Pendidikan Terakhir <span class='require'>*</span></td>
                                                         <td colspan="3">
                                                             <select class="input-small form-control required" name="pendidikan_terakhir">
-                                                                <option></option>
-                                                                <option value="SMA">SMA</option>
+                                                                <option value="SMA">SMA/SMK</option>
                                                                 <option value="D3">D3</option> 
                                                                 <option value="S1">S1</option> 
                                                                 <option value="S2">S2</option> 
@@ -347,24 +334,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </tbody>
                                                 </table>  
                                                 
-                                                 <div class="input-medium form-group">
+                                                <div class="input-medium form-group">
+                                                    <label for="exampleInputFile" class="col-md-6 control-label">Upload Foto</label>				
+                                                    <div class="col-md-12">
+                                                        <input id="exampleInputFile" type="file" class="required" name="filefoto">
+                                                        <p class="help-block"><i>- Ukuran file Max 500 kB* <br> - Hanya file bertipe jpg/png*</i></p>
+                                                    </div>
+                                                </div>
+                                                <div class="input-medium form-group">
                                                  	<label for="exampleInputFile" class="col-md-6 control-label">Upload CV</label>				
                                                     <div class="col-md-12">
                                                     	<input id="exampleInputFile" type="file" class="required" name="fileuploadcv">
                                                         <p class="help-block"><i>- Ukuran file Max 500 kB* <br> - Hanya file bertipe world / pdf*</i></p>
                                                     </div>
                                                 </div>
-                                                <hr>
                                                 <div class="input-medium form-group">
-                                                    <label for="exampleInputFile" class="col-md-6 control-label">Upload Foto</label>				
+                                                    <label for="exampleInputFile" class="col-md-6 control-label">Upload Ijazah</label>				
                                                     <div class="col-md-12">
-                                                        <input id="exampleInputFile" type="file" class="required" name="filefoto">
-                                                        <p class="help-block"><i>- Ukuran file Max 500 kB* <br> - Hanya file jpg/png*</i></p>
+                                                        <input id="exampleInputFile" type="file" class="required" name="fileuploadijazah">
+                                                        <p class="help-block"><i>- Ukuran file Max 500 kB* <br> - Hanya file bertipe jpg/png*</i></p>
                                                     </div>
                                                 </div>
                                                 
-                                                <button type="submit" class="btn btn-success btn-sm btn-block ">Submit</button>
-                                                <a href="<?php echo base_url(); ?>lowongan_pekerjaan" class="btn btn-warning btn-sm btn-block">Batal</a>
+                                                <button type="submit" class="btn btn-success btn-sm btn-block ">Save</button>
+                                              
 										<?php echo form_close(); ?>
                                         </div>
                                     </div>

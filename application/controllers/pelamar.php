@@ -46,7 +46,7 @@ function __construct(){
             'data_infromasi_personal_pelamar'=>$this->model_admin->getDataInformasiPersonalPelamar(),  
             'data_pendidikan_terakhir_per_pelamar'=>$this->model_admin->getDataPendidikanTerakhirPelamar(), 
             'data_organisasi_per_pelamar'=>$this->model_admin->getDataOrganisasiPelamar(), 
-            'data_pengalaman_kerja_per_pelamar'=>$this->model_admin->getDataPengalamanKerjaPelamar(),  
+            'data_pengalaman_kerja_per_pelamar'=>$this->model_admin->getDataPengalamanKerjaPelamar()
 			 );
 		
         $this->load->view('dashboard/element/v_header',$data);

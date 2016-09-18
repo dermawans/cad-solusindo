@@ -42,7 +42,7 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Log In</h2>
+						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i>Masuk</h2>
 					</div>
 					<div class="panel-body">
                     <!-- NOTIF -->
@@ -57,12 +57,12 @@
 					}
 					?>
     					
-						<?php echo form_open('admin/cek_login','class="form-horizontal"'); ?> 
+						<?php echo form_open('login/cek_login','class="form-horizontal" id="form"'); ?> 
 							<div class="form-group mb-lg">
-								<label>Username</label>
+								<label>Email</label>
 								<div class="input-group input-group-icon">
 									<input name="last_login" type="hidden" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" class="form-control input-lg" required/>
-									<input name="username" type="text" class="form-control input-lg" required autofocus/>
+									<input name="email" type="email" class="form-control input-lg" required autofocus/>
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -87,11 +87,11 @@
 
 							<div class="row">
 								<div class="col-sm-12 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Log In</button>
+									<button type="submit" class="btn btn-primary hidden-xs">Masuk</button>
 								</div>
 							</div>
                             <hr>
-							<p class="text-center">Don't have an account yet? <a href="<?php echo site_url('register')?>">Sign Up!</a>
+							<p class="text-center">Tidak punya akun ? <a href="<?php echo site_url('register')?>">Klik untuk Mendaftar!</a>
 						</form>
 					</div>
 				</div>
@@ -107,6 +107,9 @@
 		<script src="<?php echo base_url('assets/backend/vendor/bootstrap/js/bootstrap.js')?>"></script>  
 		<script src="<?php echo base_url('assets/backend/vendor/jquery-placeholder/jquery.placeholder.js')?>"></script>
 		
+		<!-- Specific Page Vendor -->
+		<script src="<?php echo base_url('assets/backend/vendor/jquery-validation/jquery.validate.js')?>"></script>
+        
 		<!-- Theme Base, Components and Settings -->
 		<script src="<?php echo base_url('assets/backend/javascripts/theme.js')?>"></script>
 		
@@ -116,6 +119,9 @@
 		<!-- Theme Initialization Files -->
 		<script src="<?php echo base_url('assets/backend/javascripts/theme.init.js')?>"></script>
 
+		<!-- Examples -->
+		<script src="<?php echo base_url('assets/backend/javascripts/forms/examples.validation.js')?>"></script>
+        
 	</body>
 </html>
 

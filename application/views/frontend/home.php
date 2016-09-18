@@ -56,9 +56,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li><a href="<?php echo base_url(); ?>lowongan_pekerjaan">Lowongan Pekerjaan</a></li>
                         <li><a href="<?php echo base_url(); ?>hubungi_kami">Hubungi Kami</a></li>    
                     <?php if($this->session->userdata('login_status') == TRUE ){ ?>
-                        <li><a href="<?php echo base_url(); ?>profile">Profile</a></li>
+                        <li><a href="<?php echo base_url(); ?>profile">Profil</a></li>
+                        <li><a href="<?php echo base_url(); ?>login/logout">Keluar</a></li>
                    	<?php } else { ?>
-                        <li><a href="<?php echo base_url(); ?>login">Login</a></li>
+                        <li><a href="<?php echo base_url(); ?>login">Masuk</a></li>
                    	<?php } ?>
                     </ul>
                 </div>
@@ -99,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <!--feature start-->
             <div class="text-center feature-head">
-                <h1>Welcome</h1>
+                <h1>Selamat Datang</h1>
                 <div class="col-lg-14 text-center">
                     <img src="<?php echo base_url(); ?>assets/frontend/img/logo.png" height="50px" width="300">
                 </div>
@@ -109,9 +110,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="<?php echo base_url(); ?>profil_perusahaan">
                     <div class="f-box">
                         <i class=" icon-user"></i>
-                        <h2>About Us</h2>
+                        <h2>Tentang Kami</h2>
                     </div>
-                    <p class="f-text">About PT. CAD Solusindo <i class=" icon-chevron-right"></i></p>
+                    <p class="f-text">Tentang PT. CAD Solusindo <i class=" icon-chevron-right"></i></p>
                   </a>
                 </section>
                 
@@ -121,9 +122,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="<?php echo base_url(); ?>produk_servis">
                     <div class="f-box">
                         <i class=" icon-globe"></i>
-                        <h2>Product &amp; Service</h2>
+                        <h2>Produk &amp; Servis</h2>
                     </div>
-                    <p class="f-text">Product &amp; Service PT. CAD Solusindo <i class=" icon-chevron-right"></i></p>
+                    <p class="f-text">Produk &amp; Servis PT. CAD Solusindo <i class=" icon-chevron-right"></i></p>
                     </a>
                 </section>
             </div>
@@ -132,9 +133,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="<?php echo base_url(); ?>lowongan_pekerjaan">
                     <div class="f-box">
                         <i class="icon-group"></i>
-                        <h2>Career</h2>
+                        <h2>Karir</h2>
                     </div>
-                    <p class="f-text">Join With Us <i class=" icon-chevron-right"></i></p>
+                    <p class="f-text">Bergabunglah bersama kami <i class=" icon-chevron-right"></i></p>
                      </a>
                 </section>
             </div>

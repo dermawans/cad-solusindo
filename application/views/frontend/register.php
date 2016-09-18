@@ -42,7 +42,7 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Daftar</h2>
 					</div>
 					<div class="panel-body">
                     <!-- NOTIF -->
@@ -52,7 +52,7 @@
                 echo '<p class="alert alert-danger text-center">'.$message .'</p>';
             }?>
     					
-						<?php echo form_open('register/register','class="form-horizontal"'); ?> 
+						<?php echo form_open('register/register','class="form-horizontal" id="form"'); ?> 
 							<div class="form-group mb-lg">
 								<label>Email</label>
 								<div class="input-group input-group-icon"> 
@@ -93,9 +93,11 @@
 
 							<div class="row">
 								<div class="col-sm-12 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
+									<button type="submit" class="btn btn-primary hidden-xs">Daftar</button>
 								</div>
 							</div>
+						 <hr>
+						 <p class="text-center">Sudah punya akun ? <a href="<?php echo site_url('login')?>">Klik untuk Masuk!</a>
 						</form>
 					</div>
 				</div>
@@ -111,6 +113,9 @@
 		<script src="<?php echo base_url('assets/backend/vendor/bootstrap/js/bootstrap.js')?>"></script>  
 		<script src="<?php echo base_url('assets/backend/vendor/jquery-placeholder/jquery.placeholder.js')?>"></script>
 		
+		<!-- Specific Page Vendor -->
+		<script src="<?php echo base_url('assets/backend/vendor/jquery-validation/jquery.validate.js')?>"></script>
+        
 		<!-- Theme Base, Components and Settings -->
 		<script src="<?php echo base_url('assets/backend/javascripts/theme.js')?>"></script>
 		
@@ -119,6 +124,9 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="<?php echo base_url('assets/backend/javascripts/theme.init.js')?>"></script>
+
+		<!-- Examples -->
+		<script src="<?php echo base_url('assets/backend/javascripts/forms/examples.validation.js')?>"></script>
 
 	</body>
 </html>

@@ -15,7 +15,7 @@ class Register extends CI_Controller {
 	function register() {
         $email=$this->input->post('email');
         $username=$this->input->post('username');
-        $password=md5($this->input->post('email'));
+        $password=md5($this->input->post('password'));
 		
         $cekemail = $this->model_user->cekEmail($email);
 		if(!$cekemail)

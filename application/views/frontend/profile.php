@@ -59,11 +59,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li><a href="<?php echo base_url(); ?>home"><i class="fa fa-home fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Home</span></a></li>         
                     <li><a href="<?php echo base_url(); ?>profil_perusahaan"><i class="fa fa-globe fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profil Perusahaan</span></a></li>         
                     <li><a href="<?php echo base_url(); ?>produk_servis"><i class="fa fa-briefcase fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Produk & Servis</span></a></li>         
-                    <li class="active"><a href="<?php echo base_url(); ?>lowongan_pekerjaan"><i class="fa fa-group fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Lowongan Pekerjaan</span></a></li>        
+                    <li><a href="<?php echo base_url(); ?>lowongan_pekerjaan"><i class="fa fa-group fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Lowongan Pekerjaan</span></a></li>        
                     <li><a href="<?php echo base_url(); ?>hubungi_kami"><i class="fa fa-phone fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Hubungi Kami</span></a></li> 
                     <?php if($this->session->userdata('login_status') == TRUE ){ ?>
                                                 
-                    <li><a href="<?php echo base_url(); ?>profile"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profil</span></a></li>                        
+                    <li class="active"><a href="<?php echo base_url(); ?>profile"><i class="fa fa-user fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Profil</span></a></li>    
+                    <li><a href="<?php echo base_url(); ?>login/logout"><i class="fa fa-sign-out fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Keluar</span></a></li>                        
 
                     <?php } else { ?>
                     
@@ -78,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="page-wrapper"><!--BEGIN TITLE & BREADCRUMB PAGE-->
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
-                    <div class="page-title">Lowongan Pekerjaan</div>
+                    <div class="page-title">Profil Pelamar</div>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -91,45 +92,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-lg-14">
                                     <div class="portlet box portlet-blue">
                                         <div class="portlet-header">
-                                            <div class="caption">Formulir Lamaran</div> 
+                                            <div class="caption">Data Pelamar</div> 
                                         </div>
                                         <div class="portlet-body">
-									        <?php echo form_open_multipart('lowongan_pekerjaan/lamar_pekerjaan','class="form-validate-signup"'); ?>	 
+										<?php echo form_open_multipart('lowongan_pekerjaan/lamar_pekerjaan','class="form-validate-signup"'); ?>	 				
+                                               
+												<?php
+                                                  if(isset($data_infromasi_personal_pelamar)){
+                                                  foreach($data_infromasi_personal_pelamar as $row1){
+                                                ?>
+                                                <HR>
+                                                <H4>LAMPIRAN</H4>
+                                                <HR>
                                                 <table class="table table-hover table-striped">
                                                     <tbody>
                                                     <tr>
-                                                        <td class="input-medium">No. Aplikasi <span class='require'>*</span></td>
-                                                        <td colspan="3"><input id="no_aplikasi" value="<?= $no_aplikasi ?>" class="form-control required" name="no_aplikasi"  type="text" readonly></td> 
+                                                        <td class="input-medium">CV</td>
+                                                    <td><a href="<?php echo base_url(); ?>assets/cv/<?php echo $row1->cv; ?>" class="btn btn-default">Download</a></td> 
                                                     </tr>
                                                     <tr>
-                                                        <td class="input-medium">Tanggal Melamar <span class='require'>*</span></td>
-                                                        <td colspan="3"><input type="text" name="tanggal_melamar" class="form-control required" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" readonly></td> 
+                                                        <td class="input-medium">Ijazah</td>
+                                                    <td><a href="<?php echo base_url(); ?>assets/ijazah/<?php echo $row1->ijazah; ?>" class="btn btn-default">Download</a></td> 
                                                     </tr>
                                                     <tr>
-                                                        <td class="input-medium">Posisi <span class='require'>*</span></td>
-                                                        <td colspan="3"><input type="text" name="posisi" class="form-control required" value="<?php echo $judul_lowongan; ?>" readonly> <input type="hidden" name="id_lowongan" class="form-control required" value="<?php echo $id_lowongan; ?>" readonly> <input type="hidden" name="pelamar" class="form-control required" value="<?php echo $pelamar; ?>" readonly></td> 
+                                                        <td class="input-medium">Foto</td>
+                                                        <td><img height="240" width="160" src="<?php echo base_url(); ?>assets/foto/<?php echo $row1->foto; ?>"></td> 
                                                     </tr>
+                                                    </tbody>
+                                                </table>
+                                                <HR>
+                                                <H4>DATA PERSONAL</H4>
+                                                <HR>
+                                                <table class="table table-hover table-striped">
+                                                	<tbody>
                                                     <tr>
                                                         <td>Nama  <span class='require'>*</span><br>(Sesuai Kartu Identitas : KTP/SIM)</td>
-                                                        <td colspan="3"><input type="text" name="nama" class="form-control required"/></td> 
+                                                        <td colspan="3"><input type="text" name="nama" value="<?php echo $row1->nama; ?>" class="form-control required"/></td> 
                                                     </tr>
                                                     <tr>
                                                         <td>No KTP <span class='require'>*</span></td>
-                                                        <td colspan="3"><input type="text" id="ktp" placeholder="99.9999.999999.9999" name="no_ktp" class="form-control required"/></td> 
+                                                        <td colspan="3"><input type="text" id="ktp" value="<?php echo $row1->no_ktp; ?>" placeholder="99.9999.999999.9999" name="no_ktp" class="form-control required"/></td> 
                                                     </tr>
                                                     <tr>
                                                         <td>Tempat Lahir / Tanggal Lahir <span class='require'>*</span><br> <i>(YYYY-MM-DD)</i></td>
-                                                        <td class="input-small"><input type="text" name="tempat_lahir" class="input-medium form-control required"/></td>
+                                                        <td class="input-small"><input type="text" name="tempat_lahir" value="<?php echo $row1->tempat_lahir; ?>" class="input-medium form-control required"/></td>
                                                         <td><h4>/</h4></td>
-                                                        <td><input type="text" name="tanggal_lahir" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" class="input-medium datepicker-default form-control required"/></td> 
+                                                        <td><input type="text" name="tanggal_lahir" data-date-format="yyyy-mm-dd" value="<?php echo $row1->tanggal_lahir; ?>" placeholder="yyyy-mm-dd" class="input-medium datepicker-default form-control required"/></td> 
                                                     </tr>
                                                     <tr>
                                                         <td>Jenis Kelamin <span class='require'>*</span></td>
                                                         <td colspan="3">
                                                             <select class="form-control required" name="jenis_kelamin">
                                                                 <option></option>
+                                                                <?php if($row1->jenis_kelamin=="Pria")
+																{
+																?>
+                                                                <option selected value="Pria">Pria</option>
+                                                                <option value="Wanita">Wanita</option>
+                                                                <?php } if($row1->jenis_kelamin=="Wanita")
+																{
+																?>
                                                                 <option value="Pria">Pria</option>
-                                                                <option value="Wanita">Wanita</option> 
+                                                                <option selected value="Wanita">Wanita</option> 
+                                                            	<?php } ?>
                                                             </select>
                                                          </td> 
                                                     </tr>
@@ -137,70 +162,129 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <td>Agama <span class='require'>*</span></td>
                                                         <td colspan="3">
                                                             <select class="form-control required" name="agama">
-                                                                <option></option>
-                                                                <option value="Islam">Islam</option>
+                                                            	<?php if($row1->agama=="Islam")
+																{
+																?>
+                                                                <option selected value="Islam">Islam</option>
                                                                 <option value="Kristen">Kristen</option> 
                                                                 <option value="Katolik">Katolik</option> 
                                                                 <option value="Hindu">Hindu</option> 
                                                                 <option value="Budha">Budha</option> 
+                                                                <option value="Lainnya">Lainnya</option>
+                                                                <?php } if($row1->agama=="Kristen")
+																{
+																?>
+                                                                <option value="Islam">Islam</option>
+                                                                <option selected value="Kristen">Kristen</option> 
+                                                                <option value="Katolik">Katolik</option> 
+                                                                <option value="Hindu">Hindu</option> 
+                                                                <option value="Budha">Budha</option> 
+                                                                <option value="Lainnya">Lainnya</option>
+                                                                <?php } if($row1->agama=="Katolik")
+																{
+																?>
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Kristen">Kristen</option> 
+                                                                <option selected value="Katolik">Katolik</option> 
+                                                                <option value="Hindu">Hindu</option> 
+                                                                <option value="Budha">Budha</option>
+                                                                <option value="Lainnya">Lainnya</option> 
+                                                                <?php } if($row1->agama=="Hindu")
+																{
+																?>
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Kristen">Kristen</option> 
+                                                                <option value="Katolik">Katolik</option> 
+                                                                <option selected value="Hindu">Hindu</option> 
+                                                                <option value="Budha">Budha</option> 
+                                                                <option value="Lainnya">Lainnya</option>
+                                                                <?php } if($row1->agama=="Budha")
+																{
+																?>
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Kristen">Kristen</option> 
+                                                                <option value="Katolik">Katolik</option> 
+                                                                <option value="Hindu">Hindu</option> 
+                                                                <option selected value="Budha">Budha</option>
+                                                                <option value="Lainnya">Lainnya</option> 
+                                                                <?php } if($row1->agama=="Lainnya")
+																{
+																?>
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Kristen">Kristen</option> 
+                                                                <option value="Katolik">Katolik</option> 
+                                                                <option value="Hindu">Hindu</option> 
+                                                                <option value="Budha">Budha</option>
+                                                                <option selected value="Lainnya">Lainnya</option> 
+                                                                <?php 
+																}
+																?>
                                                             </select>
                                                          </td> 
                                                     </tr>
                                                     <tr>
                                                         <td>Alamat Domisili <span class='require'>*</span></td>
                                                         <td colspan="3">
-                                                        	<textarea class="form-control required" name="alamat_domisili"></textarea>
+                                                        	<textarea class="form-control required" name="alamat_domisili"><?php echo $row1->alamat_domisili; ?></textarea>
                                                             
                                                             <label for="" class="control-label">RT <span class='require'>*</span></label>
-                                                            <input type="text" name="rt_domisili" class="input-small form-control number required"/>
+                                                            <input type="text" value="<?php echo $row1->rt_domisili; ?>" name="rt_domisili" class="input-small form-control number required"/>
                                                             
                                                             <label for="" class="control-label">RW <span class='require'>*</span></label>
-                                                            <input type="text" name="rw_domisili" class="input-small form-control number required"/>
+                                                            <input type="text" value="<?php echo $row1->rw_domisili; ?>" name="rw_domisili" class="input-small form-control number required"/>
                                                             
                                                             <label for="" class="control-label">KOTA <span class='require'>*</span></label>
-                                                            <input type="text" name="kota_domisili" class="input-medium form-control required"/>
+                                                            <input type="text" value="<?php echo $row1->kota_domisili; ?>" name="kota_domisili" class="input-medium form-control required"/>
                                                             
                                                             <label for="" class="control-label">KODE POS <span class='require'>*</span></label>
-                                                            <input type="text" name="kodepos_domisili" class="input-small form-control number required"/>
+                                                            <input type="text" value="<?php echo $row1->kodepos_domisili; ?>" name="kodepos_domisili" class="input-small form-control number required"/>
                                                         </td> 
                                                     </tr>
                                                     <tr>
                                                         <td>Alamat Email <span class='require'>*</span></td>
                                                         <td colspan="3">
-                                                        	<input type="email" name="email" class="form-control required email"/>	
+                                                        	<input type="email" value="<?php echo $row1->email; ?>" name="email"  class="form-control required email" readonly/>	
                                                         </td> 
                                                     </tr>
                                                     <tr>
                                                         <td>No. Telepon <br>(contoh, 0215661000)</td>
                                                         <td colspan="3">
-                                                            <input type="text" name="no_telepon" class="form-control number"/>	
+                                                            <input type="text" value="<?php echo $row1->no_telepon; ?>" name="no_telepon" class="form-control number"/>	
                                                         </td> 
                                                     </tr>
                                                     <tr>
                                                         <td>No. Handphone <span class='require'>*</span> <br>(contoh, 081212345678)</td>
                                                         <td colspan="3">
-                                                            <input type="text" name="no_handphone" class="form-control number required"/>	
+                                                            <input type="text" value="<?php echo $row1->no_handphone; ?>" name="no_handphone" class="form-control number required"/>	
                                                         </td> 
                                                     </tr>
                                                     <tr>
                                                         <td>Kerabat yang dapat dihubungi <span class='require'>*</span></td>
                                                         <td colspan="3">  
-                                                            <input type="text" name="kerabat_yang_dapat_dihubungi" class="form-control required"/>
+                                                            <input type="text" value="<?php echo $row1->kerabat_yang_dapat_dihubungi; ?>" name="kerabat_yang_dapat_dihubungi" class="form-control required"/>
                                                             
                                                             <label for="" class="control-label">Hubungan <span class='require'>*</span></label>
-                                                            <input type="text" name="hubungan_kerabat_yang_dapat_dihubungi" class="form-control required"/>
+                                                            <input type="text" value="<?php echo $row1->hubungan_kerabat_yang_dapat_dihubungi; ?>" name="hubungan_kerabat_yang_dapat_dihubungi" class="form-control required"/>
                                                             
                                                             <label for="" class="control-label">No. Telepon <span class='require'>*</span></label>
-                                                            <input type="text" name="no_telepon_kerabat_yang_dapat_dihubungi" class="form-control number required"/> 
+                                                            <input type="text" value="<?php echo $row1->no_telepon_kerabat_yang_dapat_dihubungi; ?>" name="no_telepon_kerabat_yang_dapat_dihubungi" class="form-control number required"/> 
                                                         </td> 
                                                     </tr>
                                                     <tr>
                                                         <td>Status Perkawinan <span class='require'>*</span></td>
                                                         <td colspan="3">
                                                             <select class="input-small form-control required" name="status_perkawinan">
-                                                                <option></option>
-                                                                <option value="Lajang">Lajang</option>
+                                                                <?php if($row1->status_perkawinan=="Lajang")
+																{
+																?>
+                                                                <option selected value="Lajang">Lajang</option>
                                                                 <option value="Menikah">Menikah</option> 
+                                                                <?php } if($row1->status_perkawinan=="Menikah")
+																{
+																?>
+                                                                <option value="Lajang">Lajang</option>
+                                                                <option selected value="Menikah">Menikah</option>
+                                                                <?php } ?>
                                                             </select>
                                                          </td> 
                                                     </tr>
@@ -208,74 +292,94 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <td>Pendidikan Terakhir <span class='require'>*</span></td>
                                                         <td colspan="3">
                                                             <select class="input-small form-control required" name="pendidikan_terakhir">
-                                                                <option></option>
-                                                                <option value="SMA">SMA</option>
+                                                                <?php if($row1->pendidikan_terakhir=="SMA")
+																{
+																?>
+                                                                <option selected value="SMA">SMA/SMK</option>
                                                                 <option value="D3">D3</option> 
                                                                 <option value="S1">S1</option> 
                                                                 <option value="S2">S2</option> 
                                                                 <option value="S3">S3</option> 
+                                                                 <?php } if($row1->pendidikan_terakhir=="D3")
+																{
+																?>
+                                                                <option value="SMA">SMA</option>
+                                                                <option selected value="D3">D3</option> 
+                                                                <option value="S1">S1</option> 
+                                                                <option value="S2">S2</option> 
+                                                                <option value="S3">S3</option> 
+                                                                 <?php } if($row1->pendidikan_terakhir=="S1")
+																{
+																?>
+                                                                <option value="SMA">SMA</option>
+                                                                <option value="D3">D3</option> 
+                                                                <option selected value="S1">S1</option> 
+                                                                <option value="S2">S2</option> 
+                                                                <option value="S3">S3</option> 
+                                                                 <?php } if($row1->pendidikan_terakhir=="S2")
+																{
+																?>
+                                                                <option value="SMA">SMA</option>
+                                                                <option value="D3">D3</option> 
+                                                                <option value="S1">S1</option> 
+                                                                <option selected value="S2">S2</option> 
+                                                                <option value="S3">S3</option> 
+                                                                 <?php } if($row1->pendidikan_terakhir=="S3")
+																{
+																?>
+                                                                <option value="SMA">SMA</option>
+                                                                <option value="D3">D3</option> 
+                                                                <option value="S1">S1</option> 
+                                                                <option value="S2">S2</option> 
+                                                                <option selected value="S3">S3</option>
+                                                                <?PHP } ?> 
                                                             </select>
                                                          </td> 
                                                     </tr>
                                                     </tbody>
                                                 </table>  
-                                                
+                                            <?php }
+											}
+											?>    
+													 
                                                 <HR>
                                                 <H4>RIWAYAT PENDIDIKAN *</H4>
                                                 <HR>
                                                 <table class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                     <tr>
+                                                    	<th>No</th>
                                                         <th>Tingkat</th>
                                                         <th>Nama Institusi</th>
                                                         <th>Jurusan</th>
                                                         <th>Tahun Kelulusan</th>
                                                         <th>IPK Akhir / Nilai Rata-rata</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
+													<?php
+														$no=1;
+                                                        if(isset($data_pendidikan_terakhir_pelamar)){
+                                                            foreach($data_pendidikan_terakhir_pelamar as $row2){
+                                                    ?>
                                                     <tr> 
-                                                        <td><input type="text" name="tingkat_1" value="SMA / SMK" class="form-control" readonly></td> 
-                                                        <td><input type="text" name="nama_institusi_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="jurusan_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="tahun_kelulusan_1" class="form-control number"/></td>
-                                                        <td><input type="text" name="nilai_akhir_1" class="form-control number"/></td> 
+                                                    	<td><?php echo $no++; ?></td>
+                                                        <td><?php echo $row2->tingkat; ?></td> 
+                                                        <td><?php echo $row2->nama_institusi; ?></td> 
+                                                        <td><?php echo $row2->jurusan; ?></td> 
+                                                        <td><?php echo $row2->tahun_kelulusan; ?></td>
+                                                        <td><?php echo $row2->nilai_akhir; ?></td> 
+                                                        <td>Edit</td> 
                                                     </tr>
-                                                    <tr> 
-                                                        <td><input type="text" name="tingkat_2" value="D3" class="form-control" readonly></td> 
-                                                        <td><input type="text" name="nama_institusi_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="jurusan_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="tahun_kelulusan_2" class="form-control number"/></td>
-                                                        <td><input type="text" name="nilai_akhir_2" class="form-control number"/></td> 
-                                                    </tr>
-                                                    <tr> 
-                                                        <td><input type="text" name="tingkat_3" value="S1" class="form-control" readonly></td> 
-                                                        <td><input type="text" name="nama_institusi_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="jurusan_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="tahun_kelulusan_3" class="form-control number"/></td>
-                                                        <td><input type="text" name="nilai_akhir_3" class="form-control number"/></td> 
-                                                    </tr>
-                                                    <tr> 
-                                                        <td><input type="text" name="tingkat_4" value="S2" class="form-control" readonly></td> 
-                                                        <td><input type="text" name="nama_institusi_4" class="form-control"/></td> 
-                                                        <td><input type="text" name="jurusan_4" class="form-control"/></td> 
-                                                        <td><input type="text" name="tahun_kelulusan_4" class="form-control number"/></td>
-                                                        <td><input type="text" name="nilai_akhir_4" class="form-control number"/></td> 
-                                                    </tr>
-                                                    <tr> 
-                                                        <td><input type="text" name="tingkat_5" value="S3" class="form-control" readonly></td> 
-                                                        <td><input type="text" name="nama_institusi_5" class="form-control"/></td> 
-                                                        <td><input type="text" name="jurusan_5" class="form-control"/></td> 
-                                                        <td><input type="text" name="tahun_kelulusan_5" class="form-control number"/></td>
-                                                        <td><input type="text" name="nilai_akhir_5" class="form-control number"/></td> 
-                                                    </tr>
+                                              		<?php }} ?>
                                                     </tbody>
-                                                </table>  
+                                                </table>    
                                                 
                                                 <HR>
                                                 <H4>ORGANISASI SEKOLAH / SOSIAL</H4>
                                                 <HR>
-                                                <table class="table table-striped table-bordered table-hover">
+                                               <table class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                     <tr>
                                                         <th>No</th>
@@ -283,30 +387,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <th>Jabatan</th>
                                                         <th>Dari</th>
                                                         <th>Sampai</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>  
-                                                        <td><input type="text" name="no_organisasi_1" value="1" class="input-small form-control" readonly></td>
-                                                        <td><input type="text" name="organisasi_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_1" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_1" class="form-control"/></td> 
+                                                    <?php
+														$no=1;
+                                                        if(isset($data_organisasi_pelamar)){
+                                                            foreach($data_organisasi_pelamar as $row3){
+                                                    ?>
+                                                    <tr> 
+                                                    	<td><?php echo $no++; ?></td>
+                                                        <td><?php echo $row3->organisasi; ?></td> 
+                                                        <td><?php echo $row3->jabatan; ?></td> 
+                                                        <td><?php echo $row3->dari; ?></td> 
+                                                        <td><?php echo $row3->sampai; ?></td>
+                                                        <td>Edit</td>
                                                     </tr>
-                                                    <tr>  
-                                                        <td><input type="text" name="no_organisasi_2" value="2" class="input-small form-control" readonly></td>
-                                                        <td><input type="text" name="organisasi_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_2" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_2" class="form-control"/></td> 
-                                                    </tr>
-                                                    <tr>  
-                                                        <td><input type="text" name="no_organisasi_3" value="3" class="input-small form-control" readonly></td>
-                                                        <td><input type="text" name="organisasi_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_3" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_3" class="form-control"/></td> 
-                                                    </tr>
+                                              		<?php }} ?>
                                                     </tbody>
                                                 </table>  
                                                 
@@ -321,50 +419,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <th>Jabatan</th>
                                                         <th>Dari</th>
                                                         <th>Sampai</th>
+                                                        <th>Action</th>
                                                     </tr>
-                                                    </thead><tbody>
-                                                    <tr>  
-                                                        <td><input type="text" name="no_1" value="1" class="input-small form-control" readonly></td>
-                                                        <td><input type="text" name="perusahaan_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_1" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_1" class="form-control"/></td> 
+                                                    </thead>
+                                                    <tbody>
+                                                    
+                                                    <?php
+														$no=1;
+                                                        if(isset($data_pengalaman_kerja_pelamar)){
+                                                            foreach($data_pengalaman_kerja_pelamar as $row4){
+                                                    ?>
+                                                    <tr> 
+                                                    	<td><?php echo $no++; ?></td>
+                                                        <td><?php echo $row4->perusahaan; ?></td> 
+                                                        <td><?php echo $row4->jabatan; ?></td> 
+                                                        <td><?php echo $row4->dari; ?></td> 
+                                                        <td><?php echo $row4->sampai; ?></td>
+                                                        <td>Edit</td>
                                                     </tr>
-                                                    <tr>  
-                                                        <td><input type="text" name="no_2" value="2" class="input-small form-control" readonly></td>
-                                                        <td><input type="text" name="perusahaan_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_2" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_2" class="form-control"/></td> 
-                                                    </tr>
-                                                    <tr>  
-                                                        <td><input type="text" name="no_3" value="3" class="input-small form-control" readonly></td>
-                                                        <td><input type="text" name="perusahaan_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_3" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_3" class="form-control"/></td> 
-                                                    </tr>
+                                              		<?php }} ?>
                                                     </tbody>
                                                 </table>  
                                                 
-                                                 <div class="input-medium form-group">
-                                                 	<label for="exampleInputFile" class="col-md-6 control-label">Upload CV</label>				
-                                                    <div class="col-md-12">
-                                                    	<input id="exampleInputFile" type="file" class="required" name="fileuploadcv">
-                                                        <p class="help-block"><i>- Ukuran file Max 500 kB* <br> - Hanya file bertipe world / pdf*</i></p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="input-medium form-group">
-                                                    <label for="exampleInputFile" class="col-md-6 control-label">Upload Foto</label>				
-                                                    <div class="col-md-12">
-                                                        <input id="exampleInputFile" type="file" class="required" name="filefoto">
-                                                        <p class="help-block"><i>- Ukuran file Max 500 kB* <br> - Hanya file jpg/png*</i></p>
-                                                    </div>
-                                                </div>
                                                 
-                                                <button type="submit" class="btn btn-success btn-sm btn-block ">Submit</button>
-                                                <a href="<?php echo base_url(); ?>lowongan_pekerjaan" class="btn btn-warning btn-sm btn-block">Batal</a>
+                                                <button type="submit" class="btn btn-success btn-sm btn-block ">Save</button>
+                                              
 										<?php echo form_close(); ?>
                                         </div>
                                     </div>
