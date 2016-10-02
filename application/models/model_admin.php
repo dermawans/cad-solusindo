@@ -184,17 +184,17 @@ a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agam
 		$status_aplikasi = $this->input->post('status_aplikasi'); 
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.no_aplikasi,
+		e.logika,e.bahasa_inggris,e.tester,e.no_aplikasi
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
 		where c.id_lowongan = '".$id_lowongan."' and b.status_aplikasi = '".$status_aplikasi."'
-		order by a.no_aplikasi asc
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
@@ -209,17 +209,17 @@ a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agam
 		$tanggal_akhir = $this->input->post('tanggal_akhir');
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.no_aplikasi,
+		e.logika,e.bahasa_inggris,e.tester,e.no_aplikasi
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
 		where c.id_lowongan = '".$id_lowongan."' and b.status_aplikasi = '".$status_aplikasi."' and b.tanggal_melamar between '".$tanggal_awal."' and '".$tanggal_akhir."'
-		order by a.no_aplikasi asc
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
@@ -228,17 +228,17 @@ a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agam
 		$status_aplikasi = $this->input->post('status_aplikasi'); 
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.no_aplikasi,
+		e.logika,e.bahasa_inggris,e.tester,e.no_aplikasi
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
 		where b.status_aplikasi = '".$status_aplikasi."'  
-		order by a.no_aplikasi asc
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
@@ -251,17 +251,17 @@ a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agam
 		$tanggal_akhir = $this->input->post('tanggal_akhir');
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.id_users,
+		e.logika,e.bahasa_inggris,e.tester,e.id_users
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
 		where  b.status_aplikasi = '".$status_aplikasi."' and b.tanggal_melamar between '".$tanggal_awal."' and '".$tanggal_akhir."'
-		order by a.no_aplikasi asc
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
@@ -270,17 +270,17 @@ a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agam
 		$id_lowongan = $this->input->post('id_lowongan'); 		
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.no_aplikasi,
+		e.logika,e.bahasa_inggris,e.tester,e.no_aplikasi
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
 		where c.id_lowongan = '".$id_lowongan."' 
-		order by a.no_aplikasi asc
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
@@ -293,33 +293,33 @@ a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agam
 		$tanggal_akhir = $this->input->post('tanggal_akhir');
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.no_aplikasi,
+		e.logika,e.bahasa_inggris,e.tester,e.no_aplikasi
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
 		where c.id_lowongan = '".$id_lowongan."' and b.tanggal_melamar between '".$tanggal_awal."' and '".$tanggal_akhir."'
-		order by a.no_aplikasi asc
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
 	function getDataPelamarSemuaLowonganSemuaStatusTanpaTanggal(){ 
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.no_aplikasi,
+		e.logika,e.bahasa_inggris,e.tester,e.no_aplikasi
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
-		order by a.no_aplikasi asc
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
@@ -330,17 +330,17 @@ a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agam
 		$tanggal_akhir = $this->input->post('tanggal_akhir');
 		return $this->db->query("
 		select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+		a.id_users,a.nama,a.pendidikan_terakhir,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.id_users,b.no_aplikasi,
 		c.judul_lowongan,
-		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,
-		e.logika,e.bahasa_inggris,e.tester
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		d.jadwal_pelamar_interview,d.hadir,d.hasil_interview,d.interviewer,d.no_aplikasi,
+		e.logika,e.bahasa_inggris,e.tester,e.no_aplikasi
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			left join tbl_data_interview_pelamar d on a.no_aplikasi=d.no_aplikasi
-			left join tbl_hasil_tes_pelamar e on a.no_aplikasi=e.no_aplikasi
+			left join tbl_data_interview_pelamar d on b.no_aplikasi=d.no_aplikasi
+			left join tbl_hasil_tes_pelamar e on b.no_aplikasi=e.no_aplikasi
 		where b.tanggal_melamar between '".$tanggal_awal."' and '".$tanggal_akhir."'
-		order by a.no_aplikasi asc
+		order by b.no_aplikasi asc
 		");
 	}	 
 	
