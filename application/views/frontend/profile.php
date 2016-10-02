@@ -108,15 +108,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <tbody>
                                                     <tr>
                                                         <td class="input-medium">CV</td>
-                                                    <td><a href="<?php echo base_url(); ?>assets/cv/<?php echo $row1->cv; ?>" class="btn btn-default">Download</a></td> 
+                                                    <td><a href="<?php echo base_url(); ?>assets/cv/<?php echo $row1->cv; ?>" class="btn btn-default">Download</a><hr>Ganti : <input id="exampleInputFile" type="file" class="btn btn-default" name="fileuploadcv" ></td> 
                                                     </tr>
                                                     <tr>
                                                         <td class="input-medium">Ijazah</td>
-                                                    <td><a href="<?php echo base_url(); ?>assets/ijazah/<?php echo $row1->ijazah; ?>" class="btn btn-default">Download</a></td> 
+                                                    <td><a href="<?php echo base_url(); ?>assets/ijazah/<?php echo $row1->ijazah; ?>" class="btn btn-default">Download</a><hr>Ganti : <input id="exampleInputFile" type="file" class="btn btn-default" name="fileuploadijazah">
+                                                        </td> 
                                                     </tr>
                                                     <tr>
                                                         <td class="input-medium">Foto</td>
-                                                        <td><img height="240" width="160" src="<?php echo base_url(); ?>assets/foto/<?php echo $row1->foto; ?>"></td> 
+                                                        <td><img height="240" width="160" src="<?php echo base_url(); ?>assets/foto/<?php echo $row1->foto; ?>"><hr>Ganti : <input id="exampleInputFile" type="file" class="btn btn-default" name="filefoto"></td> 
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -343,7 +344,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											?>    
 													 
                                                 <HR>
-                                                <H4>RIWAYAT PENDIDIKAN *</H4>
+                                                <H4>RIWAYAT PENDIDIKAN</H4>
                                                 <HR>
                                                 <table class="table table-striped table-bordered table-hover">
                                                     <thead>
@@ -358,23 +359,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-													<?php
+                                                    <?php 
 														$no=1;
                                                         if(isset($data_pendidikan_terakhir_pelamar)){
                                                             foreach($data_pendidikan_terakhir_pelamar as $row2){
                                                     ?>
-                                                    <tr> 
-                                                    	<td><?php echo $no++; ?></td>
-                                                        <td><?php echo $row2->tingkat; ?></td> 
-                                                        <td><?php echo $row2->nama_institusi; ?></td> 
-                                                        <td><?php echo $row2->jurusan; ?></td> 
-                                                        <td><?php echo $row2->tahun_kelulusan; ?></td>
-                                                        <td><?php echo $row2->nilai_akhir; ?></td> 
-                                                        <td>Edit</td> 
-                                                    </tr>
-                                              		<?php }} ?>
+                                                        <tr>
+                                                            <td><?php echo $no; ?></td>
+                                                            <td><?php echo $row2->tingkat; ?></td>
+                                                            <td><?php echo $row2->nama_institusi; ?></td>
+                                                            <td><?php echo $row2->jurusan; ?></td>
+                                                            <td><?php echo $row2->tahun_kelulusan; ?></td>
+                                                            <td><?php echo $row2->nilai_akhir; ?></td>
+                                                            <td class="center">
+                                                               	<a data-toggle="modal" href="#editpendidikanterakhir<?php echo $row2->id_pendidikan_terakhir; ?>" class="btn btn-success">Edit</a>
+                                                               <a data-toggle="modal" href="#hapuspendidikanterakhir<?php echo $row2->id_pendidikan_terakhir; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
+                                                             </td>
+                                                        </tr>
+                                                    <?php $no++; }} ?>
                                                     </tbody>
-                                                </table>    
+                                                </table>
+                                                 <a data-toggle="modal" href="#tambahpendidikanterakhir" class="btn btn-info">Tambah</a>
                                                 
                                                 <HR>
                                                 <H4>ORGANISASI SEKOLAH / SOSIAL</H4>
@@ -391,22 +396,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php
+                                                    <?php 
 														$no=1;
                                                         if(isset($data_organisasi_pelamar)){
                                                             foreach($data_organisasi_pelamar as $row3){
                                                     ?>
-                                                    <tr> 
-                                                    	<td><?php echo $no++; ?></td>
-                                                        <td><?php echo $row3->organisasi; ?></td> 
-                                                        <td><?php echo $row3->jabatan; ?></td> 
-                                                        <td><?php echo $row3->dari; ?></td> 
-                                                        <td><?php echo $row3->sampai; ?></td>
-                                                        <td>Edit</td>
-                                                    </tr>
-                                              		<?php }} ?>
+                                                        <tr>
+                                                            <td><?php echo $no; ?></td> 
+                                                            <td><?php echo $row3->organisasi; ?></td> 
+                                                            <td><?php echo $row3->jabatan; ?></td> 
+                                                            <td><?php echo $row3->dari; ?></td> 
+                                                            <td><?php echo $row3->sampai; ?></td>
+                                                            <td class="center">
+                                                               	<a data-toggle="modal" href="#editorganisasi<?php echo $row3->id_organisasi; ?>" class="btn btn-success">Edit</a>
+                                                               <a data-toggle="modal" href="#hapusorganisasi<?php echo $row3->id_organisasi; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
+                                                             </td>
+                                                        </tr>
+                                                    <?php $no++; }} ?>
                                                     </tbody>
-                                                </table>  
+                                                </table>
+                                                 <a data-toggle="modal" href="#tambahorganisasi" class="btn btn-info">Tambah</a>
+                                                
                                                 
                                                 <HR>
                                                 <H4>PENGALAMAN KERJA</H4>
@@ -423,24 +433,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    
-                                                    <?php
+                                                    <?php 
 														$no=1;
                                                         if(isset($data_pengalaman_kerja_pelamar)){
                                                             foreach($data_pengalaman_kerja_pelamar as $row4){
                                                     ?>
-                                                    <tr> 
-                                                    	<td><?php echo $no++; ?></td>
-                                                        <td><?php echo $row4->perusahaan; ?></td> 
-                                                        <td><?php echo $row4->jabatan; ?></td> 
-                                                        <td><?php echo $row4->dari; ?></td> 
-                                                        <td><?php echo $row4->sampai; ?></td>
-                                                        <td>Edit</td>
-                                                    </tr>
-                                              		<?php }} ?>
+                                                        <tr>
+                                                            <td><?php echo $no; ?></td> 
+                                                            <td><?php echo $row4->perusahaan; ?></td> 
+                                                            <td><?php echo $row4->jabatan; ?></td> 
+                                                            <td><?php echo $row4->dari; ?></td> 
+                                                            <td><?php echo $row4->sampai; ?></td> 
+                                                            <td class="center">
+                                                               	<a data-toggle="modal" href="#editpengalamankerja<?php echo $row4->id_pengalaman_kerja; ?>" class="btn btn-success">Edit</a>
+                                                               <a data-toggle="modal" href="#hapuspengalamankerja<?php echo $row4->id_pengalaman_kerja; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
+                                                             </td>
+                                                        </tr>
+                                                    <?php $no++; }} ?>
                                                     </tbody>
-                                                </table>  
+                                                </table>
+                                                 <a data-toggle="modal" href="#tambahpengalamankerja" class="btn btn-info">Tambah</a>
                                                 
+                                                <hr>
                                                 
                                                 <button type="submit" class="btn btn-success btn-sm btn-block ">Save</button>
                                               
@@ -461,6 +475,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--END FOOTER--></div>
         <!--END PAGE WRAPPER--></div>
 </div>
+
 
 <script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/js/jquery-1.10.2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/js/jquery-migrate-1.2.1.min.js"></script>
@@ -513,3 +528,30 @@ ga('send', 'pageview');
 </script>
 </body>
 </html>
+
+
+<!--add education-->
+<?php include "add_pendidikan_terakhir.php"; ?>
+<!--add education-->
+
+<!--edit education-->
+<?php include "edit_pendidikan_terakhir.php"; ?>
+<!--edit education-->
+
+
+<!--add organisasi-->
+<?php include "add_organisasi.php"; ?>
+<!--add organisasi-->
+
+<!--edit organisasi-->
+<?php include "edit_organisasi.php"; ?>
+<!--edit organisasi-->
+
+
+<!--add pengalaman kerja-->
+<?php include "add_pengalaman_kerja.php"; ?>
+<!--add pengalaman kerja-->
+
+<!--edit pengalaman kerja-->
+<?php include "edit_pengalaman_kerja.php"; ?>
+<!--edit pengalaman kerja-->
