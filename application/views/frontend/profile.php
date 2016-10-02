@@ -373,7 +373,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             <td><?php echo $row2->nilai_akhir; ?></td>
                                                             <td class="center">
                                                                	<a data-toggle="modal" href="#editpendidikanterakhir<?php echo $row2->id_pendidikan_terakhir; ?>" class="btn btn-success">Edit</a>
-                                                               <a data-toggle="modal" href="#hapuspendidikanterakhir<?php echo $row2->id_pendidikan_terakhir; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
+                                                               <a href="profile/hapus_pendidikan_terakhir/<?php echo $row2->id_pendidikan_terakhir; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
                                                              </td>
                                                         </tr>
                                                     <?php $no++; }} ?>
@@ -409,7 +409,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             <td><?php echo $row3->sampai; ?></td>
                                                             <td class="center">
                                                                	<a data-toggle="modal" href="#editorganisasi<?php echo $row3->id_organisasi; ?>" class="btn btn-success">Edit</a>
-                                                               <a data-toggle="modal" href="#hapusorganisasi<?php echo $row3->id_organisasi; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
+                                                               <a href="profile/hapus_organisasi/<?php echo $row3->id_organisasi; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
                                                              </td>
                                                         </tr>
                                                     <?php $no++; }} ?>
@@ -446,7 +446,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             <td><?php echo $row4->sampai; ?></td> 
                                                             <td class="center">
                                                                	<a data-toggle="modal" href="#editpengalamankerja<?php echo $row4->id_pengalaman_kerja; ?>" class="btn btn-success">Edit</a>
-                                                               <a data-toggle="modal" href="#hapuspengalamankerja<?php echo $row4->id_pengalaman_kerja; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
+                                                               <a href="profile/hapus_pengalaman_kerja/<?php echo $row4->id_pengalaman_kerja; ?>" class="btn btn-danger" onClick="return confirm ('Anda yakin ingin menghapus data ini ?')" >Hapus</a>
                                                              </td>
                                                         </tr>
                                                     <?php $no++; }} ?>

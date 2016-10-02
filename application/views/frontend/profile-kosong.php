@@ -208,7 +208,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </table>  
                                                 
                                                 <HR>
-                                                <H4>RIWAYAT PENDIDIKAN *</H4>
+                                                <H4>RIWAYAT PENDIDIKAN</H4>
                                                 <HR>
                                                 <table class="table table-striped table-bordered table-hover">
                                                     <thead>
@@ -276,23 +276,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <tr>  
                                                         <td><input type="text" name="no_organisasi_1" value="1" class="input-small form-control" readonly></td>
                                                         <td><input type="text" name="organisasi_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_1" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_1" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_1" class="form-control"/></td> 
+                                                        <td><input type="text" name="jabatan_organisasi_1" class="form-control"/></td>
+                                                        <td><input type="text" name="dari_organisasi_1" class="form-control"/></td> 
+                                                        <td><input type="text" name="sampai_organisasi_1" class="form-control"/></td> 
                                                     </tr>
                                                     <tr>  
                                                         <td><input type="text" name="no_organisasi_2" value="2" class="input-small form-control" readonly></td>
                                                         <td><input type="text" name="organisasi_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_2" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_2" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_2" class="form-control"/></td> 
+                                                        <td><input type="text" name="jabatan_organisasi_2" class="form-control"/></td>
+                                                        <td><input type="text" name="dari_organisasi_2" class="form-control"/></td> 
+                                                        <td><input type="text" name="sampai_organisasi_2" class="form-control"/></td> 
                                                     </tr>
                                                     <tr>  
                                                         <td><input type="text" name="no_organisasi_3" value="3" class="input-small form-control" readonly></td>
                                                         <td><input type="text" name="organisasi_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="jabatan_3" class="form-control"/></td>
-                                                        <td><input type="text" name="dari_3" class="form-control"/></td> 
-                                                        <td><input type="text" name="sampai_3" class="form-control"/></td> 
+                                                        <td><input type="text" name="jabatan_organisasi_3" class="form-control"/></td>
+                                                        <td><input type="text" name="dari_organisasi_3" class="form-control"/></td> 
+                                                        <td><input type="text" name="sampai_organisasi_3" class="form-control"/></td> 
                                                     </tr>
                                                     </tbody>
                                                 </table>  

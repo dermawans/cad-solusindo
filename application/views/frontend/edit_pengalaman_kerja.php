@@ -22,7 +22,7 @@
       <div class="modal-content">
           <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Modal Tittle</h4>
+              <h4 class="modal-title">Edit Infomrasi Pengalaman Kerja</h4>
           </div>
           <div class="modal-body">
           <table class="table table-hover table-striped">
@@ -54,8 +54,8 @@
 
           </div>
           <div class="modal-footer">
-              <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-              <button class="btn btn-success" type="button">Save changes</button>
+              <button data-dismiss="modal" class="btn btn-default" type="button">Tutup</button>
+              <button class="btn btn-success" type="submit">Simpan</button>
           </div>
       </div>
   </div>

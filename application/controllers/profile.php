@@ -60,7 +60,15 @@ function __construct(){
 			$data_informasi_personal['no_telepon_kerabat_yang_dapat_dihubungi'] = $this->input->post('no_telepon_kerabat_yang_dapat_dihubungi');
 			$data_informasi_personal['status_perkawinan'] = $this->input->post('status_perkawinan');
 			$data_informasi_personal['pendidikan_terakhir'] = $this->input->post('pendidikan_terakhir');
+			
+			
+			$this->db->insert('tbl_informasi_personal', $data_informasi_personal); 
 			 
+			if($this->input->post('nama_institusi_1')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pendidikan_terakhir_1['tingkat'] = $this->input->post('tingkat_1');
 			$data_informasi_pendidikan_terakhir_1['nama_institusi'] = $this->input->post('nama_institusi_1');
 			$data_informasi_pendidikan_terakhir_1['jurusan'] = $this->input->post('jurusan_1');
@@ -68,6 +76,14 @@ function __construct(){
 			$data_informasi_pendidikan_terakhir_1['nilai_akhir'] = $this->input->post('nilai_akhir_1');
 			$data_informasi_pendidikan_terakhir_1['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_1);
+			}
+ 
+			if($this->input->post('nama_institusi_2')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pendidikan_terakhir_2['tingkat'] = $this->input->post('tingkat_2');
 			$data_informasi_pendidikan_terakhir_2['nama_institusi'] = $this->input->post('nama_institusi_2');
 			$data_informasi_pendidikan_terakhir_2['jurusan'] = $this->input->post('jurusan_2');
@@ -75,6 +91,14 @@ function __construct(){
 			$data_informasi_pendidikan_terakhir_2['nilai_akhir'] = $this->input->post('nilai_akhir_2');
 			$data_informasi_pendidikan_terakhir_2['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_2);
+			}
+			
+			if($this->input->post('nama_institusi_3')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pendidikan_terakhir_3['tingkat'] = $this->input->post('tingkat_3');
 			$data_informasi_pendidikan_terakhir_3['nama_institusi'] = $this->input->post('nama_institusi_3');
 			$data_informasi_pendidikan_terakhir_3['jurusan'] = $this->input->post('jurusan_3');
@@ -82,6 +106,14 @@ function __construct(){
 			$data_informasi_pendidikan_terakhir_3['nilai_akhir'] = $this->input->post('nilai_akhir_3');
 			$data_informasi_pendidikan_terakhir_3['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_3);
+			}
+			
+			if($this->input->post('nama_institusi_4')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pendidikan_terakhir_4['tingkat'] = $this->input->post('tingkat_4');
 			$data_informasi_pendidikan_terakhir_4['nama_institusi'] = $this->input->post('nama_institusi_4');
 			$data_informasi_pendidikan_terakhir_4['jurusan'] = $this->input->post('jurusan_4');
@@ -89,6 +121,14 @@ function __construct(){
 			$data_informasi_pendidikan_terakhir_4['nilai_akhir'] = $this->input->post('nilai_akhir_4');
 			$data_informasi_pendidikan_terakhir_4['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_4);
+			}
+			
+			if($this->input->post('nama_institusi_5')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pendidikan_terakhir_5['tingkat'] = $this->input->post('tingkat_5');
 			$data_informasi_pendidikan_terakhir_5['nama_institusi'] = $this->input->post('nama_institusi_5');
 			$data_informasi_pendidikan_terakhir_5['jurusan'] = $this->input->post('jurusan_5');
@@ -96,57 +136,93 @@ function __construct(){
 			$data_informasi_pendidikan_terakhir_5['nilai_akhir'] = $this->input->post('nilai_akhir_5');
 			$data_informasi_pendidikan_terakhir_5['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_5);
+			}
+			
+			if($this->input->post('organisasi_1')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_organisasi_1['organisasi'] = $this->input->post('organisasi_1');
-			$data_informasi_organisasi_1['jabatan'] = $this->input->post('jabatan_1');
-			$data_informasi_organisasi_1['dari'] = $this->input->post('dari_1');
-			$data_informasi_organisasi_1['sampai'] = $this->input->post('sampai_1');
+			$data_informasi_organisasi_1['jabatan'] = $this->input->post('jabatan_organisasi_1');
+			$data_informasi_organisasi_1['dari'] = $this->input->post('dari_organisasi_1');
+			$data_informasi_organisasi_1['sampai'] = $this->input->post('sampai_organisasi_1');
 			$data_informasi_organisasi_1['id_users'] = $this->session->userdata('ID');
-						
+			
+			$this->db->insert('tbl_informasi_organisasi', $data_informasi_organisasi_1);  
+			}
+			
+			if($this->input->post('organisasi_2')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_organisasi_2['organisasi'] = $this->input->post('organisasi_2');
-			$data_informasi_organisasi_2['jabatan'] = $this->input->post('jabatan_2');
-			$data_informasi_organisasi_2['dari'] = $this->input->post('dari_2');
-			$data_informasi_organisasi_2['sampai'] = $this->input->post('sampai_2');
+			$data_informasi_organisasi_2['jabatan'] = $this->input->post('jabatan_organisasi_2');
+			$data_informasi_organisasi_2['dari'] = $this->input->post('dari_organisasi_2');
+			$data_informasi_organisasi_2['sampai'] = $this->input->post('sampai_organisasi_2');
 			$data_informasi_organisasi_2['id_users'] = $this->session->userdata('ID');	
-					
+			
+			$this->db->insert('tbl_informasi_organisasi', $data_informasi_organisasi_2);  
+			}
+			
+			if($this->input->post('organisasi_3')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_organisasi_3['organisasi'] = $this->input->post('organisasi_3');
-			$data_informasi_organisasi_3['jabatan'] = $this->input->post('jabatan_3');
-			$data_informasi_organisasi_3['dari'] = $this->input->post('dari_3');
-			$data_informasi_organisasi_3['sampai'] = $this->input->post('sampai_3');
+			$data_informasi_organisasi_3['jabatan'] = $this->input->post('jabatan_organisasi_3');
+			$data_informasi_organisasi_3['dari'] = $this->input->post('dari_organisasi_3');
+			$data_informasi_organisasi_3['sampai'] = $this->input->post('sampai_organisasi_3');
 			$data_informasi_organisasi_3['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_organisasi', $data_informasi_organisasi_3);  
+			}
+			
+			if($this->input->post('jabatan_1')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pengalaman_kerja_1['perusahaan'] = $this->input->post('perusahaan_1');
 			$data_informasi_pengalaman_kerja_1['jabatan'] = $this->input->post('jabatan_1');
 			$data_informasi_pengalaman_kerja_1['dari'] = $this->input->post('dari_1');
 			$data_informasi_pengalaman_kerja_1['sampai'] = $this->input->post('sampai_1');
 			$data_informasi_pengalaman_kerja_1['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_pengalaman_kerja', $data_informasi_pengalaman_kerja_1);
+			}
+			
+			if($this->input->post('jabatan_2')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pengalaman_kerja_2['perusahaan'] = $this->input->post('perusahaan_2');
 			$data_informasi_pengalaman_kerja_2['jabatan'] = $this->input->post('jabatan_2');
 			$data_informasi_pengalaman_kerja_2['dari'] = $this->input->post('dari_2');
 			$data_informasi_pengalaman_kerja_2['sampai'] = $this->input->post('sampai_2');
 			$data_informasi_pengalaman_kerja_2['id_users'] = $this->session->userdata('ID');
 			
+			$this->db->insert('tbl_informasi_pengalaman_kerja', $data_informasi_pengalaman_kerja_2);
+			}
+			
+			if($this->input->post('jabatan_3')=="")
+			{
+			}
+			else
+			{
 			$data_informasi_pengalaman_kerja_3['perusahaan'] = $this->input->post('perusahaan_3');
 			$data_informasi_pengalaman_kerja_3['jabatan'] = $this->input->post('jabatan_3');
 			$data_informasi_pengalaman_kerja_3['dari'] = $this->input->post('dari_3');
 			$data_informasi_pengalaman_kerja_3['sampai'] = $this->input->post('sampai_3');
 			$data_informasi_pengalaman_kerja_3['id_users'] = $this->session->userdata('ID');
-				
-		 
 			
-			$this->db->insert('tbl_informasi_personal', $data_informasi_personal); 
-			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_1);
-			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_2);
-			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_3);
-			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_4);
-			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir_5);
-			$this->db->insert('tbl_informasi_organisasi', $data_informasi_organisasi_1);  
-			$this->db->insert('tbl_informasi_organisasi', $data_informasi_organisasi_2);  
-			$this->db->insert('tbl_informasi_organisasi', $data_informasi_organisasi_3);  
-			$this->db->insert('tbl_informasi_pengalaman_kerja', $data_informasi_pengalaman_kerja_1);
-			$this->db->insert('tbl_informasi_pengalaman_kerja', $data_informasi_pengalaman_kerja_2);
 			$this->db->insert('tbl_informasi_pengalaman_kerja', $data_informasi_pengalaman_kerja_3);
-			 
+			}		 
+			  
 			 	
 			//fungsi upload cv
 			$this->load->library('upload');
@@ -349,4 +425,115 @@ function __construct(){
 			
 	}
 	
+	function simpan_tambah_pendidikan_terakhir()
+	{
+			$data_informasi_pendidikan_terakhir['tingkat'] = $this->input->post('tingkat');
+			$data_informasi_pendidikan_terakhir['nama_institusi'] = $this->input->post('nama_institusi');
+			$data_informasi_pendidikan_terakhir['jurusan'] = $this->input->post('jurusan');
+			$data_informasi_pendidikan_terakhir['tahun_kelulusan'] = $this->input->post('tahun_kelulusan');
+			$data_informasi_pendidikan_terakhir['nilai_akhir'] = $this->input->post('nilai_akhir');
+			$data_informasi_pendidikan_terakhir['id_users']=$this->session->userdata('ID'); 
+			
+			$this->db->insert('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	function simpan_edit_pendidikan_terakhir()
+	{
+			$data_informasi_pendidikan_terakhir['tingkat'] = $this->input->post('tingkat');
+			$data_informasi_pendidikan_terakhir['nama_institusi'] = $this->input->post('nama_institusi');
+			$data_informasi_pendidikan_terakhir['jurusan'] = $this->input->post('jurusan');
+			$data_informasi_pendidikan_terakhir['tahun_kelulusan'] = $this->input->post('tahun_kelulusan');
+			$data_informasi_pendidikan_terakhir['nilai_akhir'] = $this->input->post('nilai_akhir');
+			$id_pendidikan_terakhir['id_pendidikan_terakhir'] = $this->input->post('id_pendidikan_terakhir');
+			
+			$this->db->update('tbl_informasi_pendidikan_terakhir', $data_informasi_pendidikan_terakhir,$id_pendidikan_terakhir); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	function hapus_pendidikan_terakhir()
+	{
+			
+			$id_pendidikan_terakhir['id_pendidikan_terakhir'] = $this->uri->segment(3); 
+			
+			$this->db->delete('tbl_informasi_pendidikan_terakhir', $id_pendidikan_terakhir); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	
+	function simpan_tambah_organisasi()
+	{
+			$data_organisasi['organisasi'] = $this->input->post('organisasi');
+			$data_organisasi['jabatan'] = $this->input->post('jabatan');
+			$data_organisasi['dari'] = $this->input->post('dari');
+			$data_organisasi['sampai'] = $this->input->post('sampai'); 
+			$data_organisasi['id_users']=$this->session->userdata('ID'); 
+			
+			$this->db->insert('tbl_informasi_organisasi', $data_organisasi); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	function simpan_edit_organisasi()
+	{
+			$data_organisasi['organisasi'] = $this->input->post('organisasi');
+			$data_organisasi['jabatan'] = $this->input->post('jabatan');
+			$data_organisasi['dari'] = $this->input->post('dari');
+			$data_organisasi['sampai'] = $this->input->post('sampai'); 
+			$id_organisasi['id_organisasi'] = $this->input->post('id_organisasi');
+			
+			$this->db->update('tbl_informasi_organisasi', $data_organisasi,$id_organisasi); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	function hapus_organisasi()
+	{
+			
+			$id_organisasi['id_organisasi'] = $this->uri->segment(3); 
+			
+			$this->db->delete('tbl_informasi_organisasi', $id_organisasi); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	
+	function simpan_tambah_pengalaman_kerja()
+	{
+			$data_pengalaman_kerja['perusahaan'] = $this->input->post('perusahaan');
+			$data_pengalaman_kerja['jabatan'] = $this->input->post('jabatan');
+			$data_pengalaman_kerja['dari'] = $this->input->post('dari');
+			$data_pengalaman_kerja['sampai'] = $this->input->post('sampai'); 
+			$data_pengalaman_kerja['id_users']=$this->session->userdata('ID'); 
+			
+			$this->db->insert('tbl_informasi_pengalaman_kerja', $data_pengalaman_kerja); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	function simpan_edit_pengalaman_kerja()
+	{
+			$data_pengalaman_kerja['perusahaan'] = $this->input->post('perusahaan');
+			$data_pengalaman_kerja['jabatan'] = $this->input->post('jabatan');
+			$data_pengalaman_kerja['dari'] = $this->input->post('dari');
+			$data_pengalaman_kerja['sampai'] = $this->input->post('sampai'); 
+			$id_pengalaman_kerja['id_pengalaman_kerja'] = $this->input->post('id_pengalaman_kerja');
+			
+			$this->db->update('tbl_informasi_pengalaman_kerja', $data_pengalaman_kerja,$id_pengalaman_kerja); 
+			
+			header('location:'.base_url().'profile');		
+	}
+	
+	function hapus_pengalaman_kerja()
+	{
+			
+			$id_pengalaman_kerja['id_pengalaman_kerja'] = $this->uri->segment(3); 
+			
+			$this->db->delete('tbl_informasi_pengalaman_kerja', $id_pengalaman_kerja); 
+			
+			header('location:'.base_url().'profile');		
+	}
 }

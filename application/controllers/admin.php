@@ -23,10 +23,10 @@ class Admin extends CI_Controller {
             foreach($result as $row) {
                 //create the session
                 $sess_array = array(
-                    'ID' => $row->id_admin,
+                    'ID' => $row->id_users,
                     'USERNAME' => $row->username,
                     'PASS'=>$row->password,
-                    'NAME'=>$row->name,
+                    'EMAIL'=>$row->email,
                     'LEVEL' => $row->level_user,
                     'login_status'=>true,
                 );
@@ -51,9 +51,8 @@ class Admin extends CI_Controller {
     function logout() {
         $this->session->unset_userdata('ID');
         $this->session->unset_userdata('USERNAME');
-        $this->session->unset_userdata('PASS');
-        $this->session->unset_userdata('IDAGEN');
-        $this->session->unset_userdata('NAME');
+        $this->session->unset_userdata('PASS'); 
+        $this->session->unset_userdata('EMAIL');
         $this->session->unset_userdata('LEVEL');
         $this->session->unset_userdata('login_status');
         $this->session->set_flashdata('notif','THANK YOU');

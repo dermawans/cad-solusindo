@@ -9,7 +9,7 @@ class Model_admin extends CI_Model{
 	function login($username, $password) {
         //create query to connect user login database
         $this->db->select('*');
-        $this->db->from('tbl_admin');
+        $this->db->from('tbl_users');
         $this->db->where('username', $username);
         $this->db->where('password', MD5($password));
         $this->db->limit(1);
@@ -81,10 +81,10 @@ class Model_admin extends CI_Model{
 	// Ambil data semua pelamar
 	function getAllDataPelamar(){
 		return $this->db->query("select distinct
-		a.no_aplikasi,a.nama,a.pendidikan_terakhir,b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,c.judul_lowongan
-			from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi 
+		a.id_users,a.nama,a.pendidikan_terakhir,b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,c.judul_lowongan
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			order by a.no_aplikasi desc
+			order by a.id_users desc
 		")->result();
     }
 	// Ambil data semua pelamar
