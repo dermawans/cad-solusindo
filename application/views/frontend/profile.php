@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="caption">Data Pelamar</div> 
                                         </div>
                                         <div class="portlet-body">
-										<?php echo form_open_multipart('lowongan_pekerjaan/lamar_pekerjaan','class="form-validate-signup"'); ?>	 				
+										<?php echo form_open_multipart('profile/simpan','class="form-validate-signup"'); ?>	 				
                                                
 												<?php
                                                   if(isset($data_infromasi_personal_pelamar)){
