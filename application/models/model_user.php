@@ -46,6 +46,30 @@ class Model_user extends CI_Model{
         return $this->db->get($table)->result();
     }
 	
+	// cek data lamaran pelamar =================
+	function cekDataPelamar(){
+		$id_lowongan = array();
+		$id_lowongan = $this->uri->segment(3);
+		$id_users = array();
+		$id_users = $this->session->userdata('ID');
+        return $this->db->query("select distinct no_aplikasi from tbl_data_pelamar where id_users='".$id_users."' and id_lowongan='".$id_lowongan."'")->result();
+    }
+	
+	// Ambil data pelamar
+	function getDataPelamar(){
+		$id_users = array();
+		$id_users = $this->session->userdata('ID');
+		return $this->db->query("select distinct
+		a.id_users,a.nama,b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.no_aplikasi,c.judul_lowongan
+			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
+			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
+			where a.id_users ='".$id_users."'
+			order by a.id_users desc
+		")->result();
+    }
+	// Ambil data pelamar
+	
+	
 	// Lowongan Pekerjaan Aktif =================
 	function getAllDataLowonganAktif(){
         return $this->db->query("select distinct

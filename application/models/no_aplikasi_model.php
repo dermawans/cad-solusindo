@@ -3,7 +3,7 @@
 class no_aplikasi_model extends CI_Model{
    
     public function getnnoaplikasi(){
-        $q = $this->db->query("select MAX(RIGHT(no_aplikasi,5)) as code_no_aplikasi from tbl_informasi_personal");
+        $q = $this->db->query("select MAX(RIGHT(no_aplikasi,5)) as code_no_aplikasi from tbl_data_pelamar");
         $code = "";
         if($q->num_rows()>0){
             foreach($q->result() as $cd){
@@ -11,7 +11,7 @@ class no_aplikasi_model extends CI_Model{
                 $code = sprintf("%04s", $tmp);
             }
         }else{
-            $code = "P-01";
+            $code = "0001";
         }
         return $code;
     }

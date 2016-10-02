@@ -13,7 +13,7 @@ function __construct(){
 	{
 		$data=array( 
             'data_kategori'=>$this->model_user->getAllData('tbl_master_kategori_lowongan'),
-            'data_lowongan'=>$this->model_user->getAllDataLowonganAktif(),       
+            'data_lowongan'=>$this->model_user->getAllDataLowonganAktif(),          
 			 );
 	
 		$this->load->view('frontend/lowongan_pekerjaan',$data);
@@ -26,25 +26,54 @@ function __construct(){
             redirect('login');
         }
 		else 
-		{		
-		$id_lowongan['id_lowongan'] = $this->uri->segment(3);
-		$q = $this->db->get_where("tbl_master_lowongan",$id_lowongan);
-			$d = array();
-		foreach($q->result() as $idl)
-		{
-			$d['id_lowongan'] = $idl->id_lowongan;
-			$d['judul_lowongan'] = $idl->judul_lowongan;
-			$d['pelamar']= $idl->pelamar;
-		}
-		
-		$this->load->model('no_aplikasi_model');
-			
-		$d['no_aplikasi']=$this->no_aplikasi_model->getnnoaplikasi();
-		
-		$this->load->view('frontend/lamar',$d);
+		{	
+			$query = $this->model_user->cekDataPelamar();	
+			if($query)
+			{	
+				$this->session->set_flashdata('notif','Anda sudah pernah melamar untuk posisi ini !');
+				redirect('lowongan_pekerjaan');
+			}
+			else
+			{	
+				$id_lowongan['id_lowongan'] = $this->uri->segment(3);
+				$q = $this->db->get_where("tbl_master_lowongan",$id_lowongan);
+					$d = array();
+				foreach($q->result() as $idl)
+				{
+					$d['id_lowongan'] = $idl->id_lowongan;
+					$d['judul_lowongan'] = $idl->judul_lowongan;
+					$d['pelamar']= $idl->pelamar;
+				}
+				
+				$this->load->model('no_aplikasi_model');
+					
+				$d['no_aplikasi']=$this->no_aplikasi_model->getnnoaplikasi();
+				
+				$this->load->view('frontend/lamar',$d);
+			}
 		}
 	}
 	
+	
+	
+	public function lamar_pekerjaan()
+	{  
+		$data_pelamar['id_users'] = $this->session->userdata('ID');
+		$data_pelamar['tanggal_melamar'] = $this->input->post('tanggal_melamar');
+		$data_pelamar['id_lowongan'] = $this->input->post('id_lowongan');
+		$data_pelamar['no_aplikasi'] = $this->input->post('no_aplikasi');
+		$data_pelamar['status_aplikasi'] = "Belum Diproses";
+		
+		$this->db->insert('tbl_data_pelamar', $data_pelamar);
+		
+		
+		$id_lowongan['id_lowongan'] = $this->input->post('id_lowongan');
+		$data_lowongan['pelamar'] =  $this->input->post('pelamar')+1;
+		
+		$this->db->update('tbl_master_lowongan', $data_lowongan, $id_lowongan);
+		
+		$this->load->view('frontend/sukses');
+	}
 	
 	
 	public function sukses()

@@ -24,7 +24,8 @@ function __construct(){
             'data_infromasi_personal_pelamar'=>$this->model_user->cekInformasiPersonal($id_users),  
             'data_pendidikan_terakhir_pelamar'=>$this->model_user->cekPendidikanPelamar($id_users), 
             'data_organisasi_pelamar'=>$this->model_user->cekOrganisasiPelamar($id_users), 
-            'data_pengalaman_kerja_pelamar'=>$this->model_user->cekPengalamanKerja($id_users)
+            'data_pengalaman_kerja_pelamar'=>$this->model_user->cekPengalamanKerja($id_users), 
+            'data_lamaran_pelamar'=>$this->model_user->getDataPelamar()
 			 );
 			 
 		$this->load->view('frontend/profile',$data);

@@ -85,6 +85,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="clearfix"></div>
             </div>
             <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+                 <!-- NOTIF -->
+                        <?php 
+                        $message = $this->session->flashdata('notif'); 
+                        if($message){
+                            echo '<p class="alert alert-danger text-center">'.$message .'</p>';
+                        }
+                        ?>
+                            
             <div class="page-content">
                 <div class="row">
                     <div class="col-lg-12">

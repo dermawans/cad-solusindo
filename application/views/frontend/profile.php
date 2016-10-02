@@ -33,6 +33,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/css/themes/style1/pink-violet.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/css/style-responsive.css">
+    <!--table-->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/vendors/datatables/dataTables.css"/> 
 </head>
 <body class="sidebar-colors">
 <div><!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -74,8 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </nav>
         <!--END SIDEBAR MENU-->
+        
         <!--BEGIN PAGE WRAPPER-->
-         
         <div id="page-wrapper"><!--BEGIN TITLE & BREADCRUMB PAGE-->
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
@@ -83,6 +85,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="clearfix"></div>
             </div>
+                
+        <!--Data Lamaran-->
+        <div class="page-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="col-lg-14">
+                                <div class="portlet box portlet-blue">
+                                    <div class="portlet-header">
+                                        <div class="caption">Data Lamaran Pelamar</div> 
+                                    </div>
+                                    <div class="portlet-body">
+                                        <table class="table table-striped table-bordered datatables" id="example">
+                                            <thead>
+                                                <tr>            
+                                                      <th>No</th>
+                                                      <th>No Aplikasi</th>
+                                                      <th>Tanggal Melamar</th>
+                                                      <th>Posisi Lamaran</th>
+                                                      <th>Status Aplikasi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                             <?php
+                                                $no=1;
+                                                if(isset($data_lamaran_pelamar)){
+                                                    foreach($data_lamaran_pelamar as $row){
+                                                        ?>
+                                                        <tr class="gradeX">
+                                                             <th><?php echo $no++; ?></th>
+                                                            <th><?php echo $row->no_aplikasi; ?></th> 
+                                                            <th><?php echo $row->tanggal_melamar; ?></th>
+                                                            <th><?php echo $row->judul_lowongan; ?></th>
+                                                            <th><?php echo $row->status_aplikasi; ?></th>
+                                                        </tr>
+                                                    <?php }
+                                                }
+                                                ?> 
+                                            </tbody>
+                                        </table>
+            
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Data Lamaran-->
+            
+            
             <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
             <div class="page-content">
                 <div class="row">
@@ -508,6 +563,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/vendors/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/vendors/jquery-maskedinput/jquery-maskedinput.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/js/form-components.js"></script>
+<!--Table-->
+<script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/vendors/datatables/jquery.dataTables.min.js"></script> 
+<script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/vendors/datatables/dataTables.bootstrap.js"></script> 
+<script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/vendors/datatables/demo-datatables.js"></script> 
 <!--CORE JAVASCRIPT-->
 <script src="<?php echo base_url(); ?>assets/frontend/lowongan_pekerjaan/js/main.js"></script>
 <script>(function (i, s, o, g, r, a, m) {
