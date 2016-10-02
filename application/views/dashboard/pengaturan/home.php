@@ -42,7 +42,7 @@
                                                 <th>No</th>
                                                 <th>Level</th>
                                                 <th>Username</th>
-                                                <th>Name</th> 
+                                                <th>Email</th> 
                                                 <th>Las Login</th>
                                                 <?php if ($this->session->userdata('LEVEL') == 'Administrator') { ?>
                                                 <th>Action</th>
@@ -60,9 +60,9 @@
                                                     <th><?php echo $no++; ?></th>
                                                     <th><?php echo $row->level_user; ?></th>
                                                     <th><?php echo $row->username; ?></th>
-                                                    <th><?php echo $row->name; ?></th> 
+                                                    <th><?php echo $row->email; ?></th> 
                                                     <th><?php echo $row->last_login; ?></th> 
-                                                    <th><a href="#edit_user<?php echo $row->id_admin; ?>" class="modal-with-form btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a></th>
+                                                    <th><a href="#edit_user<?php echo $row->id_users; ?>" class="modal-with-form btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a></th>
                                                 </tr>
                                                 <?php }
                                             }
@@ -216,7 +216,7 @@
 		foreach($data_user as $row1){
 ?>
 
-<div id="edit_user<?php echo $row1->id_admin; ?>" class="modal-block modal-block-primary mfp-hide">
+<div id="edit_user<?php echo $row1->id_users; ?>" class="modal-block modal-block-primary mfp-hide">
 <?php echo form_open('pengaturan/save_user','id="wizard" class="form-horizontal"'); ?> 
 
     <section class="panel">
@@ -229,7 +229,7 @@
                 <div class="form-group mt-lg">
                     <label class="col-sm-4 control-label">ID User</label>
                     <div class="col-sm-6">
-                        <input type="text" name="id_admin" class="form-control" value="<?php echo $row1->id_admin;?>" readonly="readonly" required/>
+                        <input type="text" name="id_users" class="form-control" value="<?php echo $row1->id_users;?>" readonly="readonly" required/>
                     </div>
                 </div>
                 
@@ -250,7 +250,7 @@
                 <div class="form-group mt-lg">
                     <label class="col-sm-4 control-label">Password</label>
                     <div class="col-sm-6">
-                        <a href="#edit_password<?php echo $row1->id_admin; ?>" class="modal-with-form btn btn-sm btn-primary">Change</a>
+                        <a href="#edit_password<?php echo $row1->id_users; ?>" class="modal-with-form btn btn-sm btn-primary">Change</a>
                     </div>
                 </div> 
             </form>
@@ -276,7 +276,7 @@
 		foreach($data_user as $row1){
 ?>
 
-<div id="edit_password<?php echo $row1->id_admin; ?>" class="modal-block modal-block-primary mfp-hide">
+<div id="edit_password<?php echo $row1->id_users; ?>" class="modal-block modal-block-primary mfp-hide">
 <?php echo form_open('pengaturan/change_password','id="wizard" class="form-horizontal"'); ?> 
 
     <section class="panel">
@@ -294,7 +294,7 @@
                 
                 <div class="form-group">
                         <div class="col-md-6">
-                            <input id="inputer" class="form-control" name="id_admin" value="<?php echo $row1->id_admin; ?>" type="hidden" readonly>
+                            <input id="inputer" class="form-control" name="id_users" value="<?php echo $row1->id_users; ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>

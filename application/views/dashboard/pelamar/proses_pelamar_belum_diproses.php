@@ -33,6 +33,10 @@
                         <td><a href="<?php echo base_url(); ?>assets/cv/<?php echo $row1->cv; ?>" class="btn btn-default">Download</a></td> 
                         </tr>
                         <tr>
+                            <td class="input-medium">Ijazah</td>
+                        <td><a href="<?php echo base_url(); ?>assets/ijazah/<?php echo $row1->ijazah; ?>" class="btn btn-default">Download</a></td> 
+                        </tr>
+                        <tr>
                             <td class="input-medium">Foto</td>
                             <td><img height="240" width="160" src="<?php echo base_url(); ?>assets/foto/<?php echo $row1->foto; ?>"></td> 
                         </tr>

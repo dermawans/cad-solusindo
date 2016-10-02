@@ -24,7 +24,7 @@ function __construct(){
             'title'=>'Pengaturan',
             'active_pengaturan'=>'active',
             'data_kategori_lowongan'=>$this->model_admin->getAllData('tbl_master_kategori_lowongan'),
-            'data_user'=>$this->model_admin->getAllData('tbl_admin'),       
+            'data_user'=>$this->model_admin->getAllData('tbl_users'),       
 			 );
 		
         $this->load->view('dashboard/element/v_header',$data);
@@ -76,10 +76,10 @@ function __construct(){
     function save_user(){
 		if ($this->session->userdata('LEVEL') == 'Administrator' ) { 
 			
-			$id_admin['id_admin']= $this->input->post('id_admin'); 
+			$id_users['id_users']= $this->input->post('id_users'); 
 			$user['username'] = $this->input->post('username');  
 	
-			$this->db->update('tbl_admin', $user, $id_admin);
+			$this->db->update('tbl_users', $user, $id_users);
 			
 			header('location:'.base_url().'pengaturan');
 		}
@@ -89,10 +89,10 @@ function __construct(){
     function change_password(){
 		if ($this->session->userdata('LEVEL') == 'Administrator' ) { 
 			
-			$id_admin['id_admin']= $this->input->post('id_admin');
+			$id_users['id_users']= $this->input->post('id_users');
 			$password['password'] = md5($this->input->post('password')); 
 	
-			$this->db->update('tbl_admin', $password, $id_admin);
+			$this->db->update('tbl_users', $password, $id_users);
 			
 			header('location:'.base_url().'pengaturan');
 		}

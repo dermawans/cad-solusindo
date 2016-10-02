@@ -80,11 +80,13 @@ class Model_admin extends CI_Model{
 	
 	// Ambil data semua pelamar
 	function getAllDataPelamar(){
+		$a="";
 		return $this->db->query("select distinct
-		a.id_users,a.nama,a.pendidikan_terakhir,b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,c.judul_lowongan
+		a.id_users,a.nama,a.pendidikan_terakhir,b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.no_aplikasi,c.judul_lowongan
 			from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users 
 			left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-			order by a.id_users desc
+			where b.no_aplikasi<>'".$a."'
+			order by b.no_aplikasi asc
 		")->result();
     }
 	// Ambil data semua pelamar
@@ -95,13 +97,12 @@ class Model_admin extends CI_Model{
 		$no_aplikasi = $this->uri->segment(3);
 		return $this->db->query("
 		select distinct
-a.no_aplikasi,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agama,a.alamat_domisili,a.rt_domisili,a.rw_domisili,a.kota_domisili,a.kodepos_domisili,a.email,a.no_telepon,a.no_handphone,a.kerabat_yang_dapat_dihubungi,a.hubungan_kerabat_yang_dapat_dihubungi,a.no_telepon_kerabat_yang_dapat_dihubungi,a.status_perkawinan,a.pendidikan_terakhir,a.cv,a.foto,
-		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,
+a.id_users,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.agama,a.alamat_domisili,a.rt_domisili,a.rw_domisili,a.kota_domisili,a.kodepos_domisili,a.email,a.no_telepon,a.no_handphone,a.kerabat_yang_dapat_dihubungi,a.hubungan_kerabat_yang_dapat_dihubungi,a.no_telepon_kerabat_yang_dapat_dihubungi,a.status_perkawinan,a.pendidikan_terakhir,a.cv,a.ijazah,a.foto,
+		b.tanggal_melamar,b.id_lowongan,b.status_aplikasi,b.no_aplikasi,
 		c.judul_lowongan
-		from tbl_informasi_personal a left join tbl_data_pelamar b on a.no_aplikasi=b.no_aplikasi
+		from tbl_informasi_personal a left join tbl_data_pelamar b on a.id_users=b.id_users
 		left join tbl_master_lowongan c on b.id_lowongan=c.id_lowongan
-		where a.no_aplikasi='".$no_aplikasi."'
-		order by a.no_aplikasi asc
+		where b.no_aplikasi='".$no_aplikasi."' 
 		")->result();
 	}
 	// ambil  data informasi personal pelamar
@@ -110,7 +111,7 @@ a.no_aplikasi,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.a
 	function getDataPendidikanTerakhirPelamar(){
 		$no_aplikasi = array();
 		$no_aplikasi = $this->uri->segment(3);
-        return $this->db->query("select * from tbl_informasi_pendidikan_terakhir where no_aplikasi='".$no_aplikasi."' order by id_pendidikan_terakhir asc
+        return $this->db->query("select a.tingkat,a.nama_institusi,a.jurusan,a.tahun_kelulusan,a.nilai_akhir,b.no_aplikasi,b.id_users from tbl_informasi_pendidikan_terakhir a left join tbl_data_pelamar b on a.id_users=b.id_users where b.no_aplikasi='".$no_aplikasi."' order by a.id_pendidikan_terakhir asc
 		")->result();
     }
 	// ambil data  pendidikan terakhir pelamar
@@ -120,7 +121,7 @@ a.no_aplikasi,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.a
 	function getDataOrganisasiPelamar(){
 		$no_aplikasi = array();
 		$no_aplikasi = $this->uri->segment(3);
-        return $this->db->query("select * from tbl_informasi_organisasi where no_aplikasi='".$no_aplikasi."' order by id_organisasi asc
+        return $this->db->query("select a.organisasi,a.jabatan,a.dari,a.sampai,b.no_aplikasi,b.id_users from tbl_informasi_organisasi a left join tbl_data_pelamar b on a.id_users=b.id_users where b.no_aplikasi='".$no_aplikasi."' order by a.id_organisasi asc
 		")->result();
     }
 	// ambil data organisasi pelamar
@@ -129,7 +130,7 @@ a.no_aplikasi,a.nama,a.no_ktp,a.tempat_lahir,a.tanggal_lahir,a.jenis_kelamin,a.a
 	function getDataPengalamanKerjaPelamar(){
 		$no_aplikasi = array();
 		$no_aplikasi = $this->uri->segment(3);
-        return $this->db->query("select * from tbl_informasi_pengalaman_kerja where no_aplikasi='".$no_aplikasi."' order by id_pengalaman_kerja asc
+        return $this->db->query("select a.perusahaan,a.jabatan,a.dari,a.sampai,b.no_aplikasi,b.id_users from tbl_informasi_pengalaman_kerja a left join tbl_data_pelamar b on a.id_users=b.id_users where b.no_aplikasi='".$no_aplikasi."' order by a.id_pengalaman_kerja asc
 		")->result();
     }
 	// ambil data pengalaman kerja pelamar
