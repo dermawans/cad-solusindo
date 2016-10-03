@@ -72,7 +72,8 @@ function __construct(){
 		
 		$this->db->update('tbl_master_lowongan', $data_lowongan, $id_lowongan);
 		
-		$this->load->view('frontend/sukses');
+		$this->session->set_flashdata('berhasil','Lamaran berhasil dikirim');
+		redirect('lowongan_pekerjaan');
 	}
 	
 	

@@ -88,6 +88,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <!-- NOTIF -->
                         <?php 
                         $message = $this->session->flashdata('notif'); 
+                        $pesan = $this->session->flashdata('berhasil'); 
+                        if($pesan){
+                            echo '<p class="alert alert-info text-center">'.$pesan .'</p>';
+                        } 
                         if($message){
                             echo '<p class="alert alert-danger text-center">'.$message .'</p>';
                         }

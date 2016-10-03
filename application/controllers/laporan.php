@@ -23,7 +23,7 @@ function __construct(){
 		if ($this->session->userdata('LEVEL') == 'Administrator') { 
         $data=array(
             'title'=>'Laporan',
-            'data_lowongan'=>$this->model_admin->getAllData('tbl_master_lowongan'),
+            'data_lowongan'=>$this->model_admin->getAllDataLowonganAktif(),
             'data_kategori'=>$this->model_admin->getAllData('tbl_master_kategori_lowongan'),    
             'active_laporan'=>'active',      
 			 );
